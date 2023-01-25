@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import HomeScreen from './HomeScreen';
 import RecipeScreen from './RecipeScreen';
 import ArticleScreen from './ArticleScreen';
@@ -9,17 +9,28 @@ import { useEffect } from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Header from '../components/Header';
+
+const screenOptions = {
+    headerStyle: { backgroundColor: '#f5c242' }
+}
 
 const HomeNavigator = () => {
     const Stack = createStackNavigator();
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={screenOptions}
+        >
             <Stack.Screen
                 name='Home'
                 component={HomeScreen}
                 options={{
-                    title: <MaterialCommunityIcons name="home" size={60} />
-                }}
+                    title: <Header />,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle:{
+                        padding: 10,
+                    }
+                }}                    
             />
         </Stack.Navigator>
     );
@@ -33,7 +44,10 @@ const RecipeNavigator = () => {
                 name='Recipe'
                 component={RecipeScreen}
                 options={{
-                    title: <MaterialCommunityIcons name="bowl-mix" size={60} />
+                    header: () => (
+                        <Header />
+                    ),
+                    headerTitleAlign: 'center',
                 }}
             />
         </Stack.Navigator>
@@ -48,7 +62,11 @@ const ArticleNavigator = () => {
                 name='Article'
                 component={ArticleScreen}
                 options={{
-                    title: <MaterialCommunityIcons name="page-layout-body" size={60} />
+                    title: <Header />,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle:{
+                        padding: 10
+                    }
                 }}
             />
         </Stack.Navigator>
@@ -63,7 +81,11 @@ const UserNavigator = () => {
                 name='User'
                 component={UserScreen}
                 options={{
-                    title: <MaterialCommunityIcons name="chef-hat" size={60} />
+                    title: <Header />,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle:{
+                        padding: 10
+                    }
                 }}
             />
         </Stack.Navigator>
@@ -76,14 +98,15 @@ const Main = () => {
     return (
         <Tab.Navigator
             initialRouteName="Home"
-            activeColor="#e91e63"
-            barStyle={{ backgroundColor: 'tomato' }}
+            activeColor="#ed4907"
+            barStyle={{ backgroundColor: '#f57542' }}
+            labeled={false}
+            inactiveColor='white'
         >
             <Tab.Screen
                 name='Home'
                 component={HomeNavigator}
                 options={{
-                    tabBarLabel: 'Home',
                     tabBarIcon: ({ color }) => (
                       <MaterialCommunityIcons name="home" color={color} size={26} />
                     )
@@ -93,9 +116,8 @@ const Main = () => {
                 name='Recipe'
                 component={RecipeNavigator}
                 options={{
-                    tabBarLabel: 'Recipe',
                     tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name="bowl-mix" color={color} size={26} />
+                      <MaterialCommunityIcons name="chef-hat" color={color} size={26} />
                     )
                 }}
             />
@@ -103,9 +125,8 @@ const Main = () => {
                 name='Article'
                 component={ArticleNavigator}
                 options={{
-                    tabBarLabel: 'Article',
                     tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name="page-layout-body" color={color} size={26} />
+                      <MaterialCommunityIcons name="book-open-page-variant" color={color} size={26} />
                     )
                 }}
             />
@@ -113,9 +134,8 @@ const Main = () => {
                 name='User'
                 component={UserNavigator}
                 options={{
-                    tabBarLabel: 'User',
                     tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name="chef-hat" color={color} size={26} />
+                      <MaterialCommunityIcons name="account" color={color} size={26} />
                     )
                 }}
             />
