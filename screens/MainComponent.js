@@ -3,6 +3,8 @@ import HomeScreen from './HomeScreen';
 import RecipeScreen from './RecipeScreen';
 import ArticleScreen from './ArticleScreen';
 import UserScreen from './UserScreen';
+import RecipeInfoScreen from './RecipeInfoScreen';
+import ArticleInfoScreen from './ArticleInfoScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -10,6 +12,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Header from '../components/Header';
+import { fetchRecipes } from '../features/recipes/recipesSlice';
+import { fetchArticles } from '../features/articles/articlesSlice';
 
 const screenOptions = {
     headerStyle: { backgroundColor: '#f5c242' }
@@ -39,16 +43,24 @@ const HomeNavigator = () => {
 const RecipeNavigator = () => {
     const Stack = createStackNavigator();
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={screenOptions}
+        >
             <Stack.Screen
-                name='Recipe'
+                name='Recipes'
                 component={RecipeScreen}
                 options={{
-                    header: () => (
-                        <Header />
-                    ),
+                    title: <Header />,
                     headerTitleAlign: 'center',
-                }}
+                    headerTitleStyle:{
+                        padding: 10,
+                    }
+                }}                    
+            />
+            <Stack.Screen
+                name='RecipeInfo'
+                component={RecipeInfoScreen}
+                options={({ route }) => ({ title: route.params.recipe.name })}
             />
         </Stack.Navigator>
     );
@@ -57,7 +69,9 @@ const RecipeNavigator = () => {
 const ArticleNavigator = () => {
     const Stack = createStackNavigator();
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+        screenOptions={screenOptions}
+        >
             <Stack.Screen
                 name='Article'
                 component={ArticleScreen}
@@ -69,6 +83,11 @@ const ArticleNavigator = () => {
                     }
                 }}
             />
+            <Stack.Screen
+                name='ArticleInfo'
+                component={ArticleInfoScreen}
+                options={({ route }) => ({ title: route.params.article.title })}
+            />
         </Stack.Navigator>
     );
 };
@@ -76,7 +95,9 @@ const ArticleNavigator = () => {
 const UserNavigator = () => {
     const Stack = createStackNavigator();
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={screenOptions}
+        >
             <Stack.Screen
                 name='User'
                 component={UserScreen}
@@ -93,6 +114,13 @@ const UserNavigator = () => {
 };
 
 const Main = () => {
+    const dispatch = useDispatch();
+    dispatch(fetchRecipes());
+    dispatch(fetchArticles());
+    useEffect(() => {
+
+    }, [dispatch])
+
     const Tab = createMaterialBottomTabNavigator();
 
     return (

@@ -1,97 +1,126 @@
 {
     "recipes": [
         {
+            "id": 0,
             "name": "Tomato Soup",
             "image": "images/tomatoSoup.jpg"
         },
         {
+            "id": 1,
             "name": "New England Clam Chowder",
             "image": "images/newEnglandClamChowder.jpg"
         },
         {
+            "id": 2,
             "name": "Lentil Soup",
             "image": "images/lentilSoup.jpg"
         },
         {
+            "id": 3,
             "name": "Crab Bisque",
             "image": "images/crabBisque.jpg"
         },
         {
+            "id": 4,
             "name": "Minestrone",
-            "image": "images/minestronSoup.jpg"
+            "image": "images/minestroneSoup.jpg"
         },
         {
+            "id": 5,
             "name": "Butternut Squash Soup",
             "image": "images/butternutSquashSoup.jpg"
         },
         {
+            "id": 6,
             "name": "Corn Chowder",
             "image": "images/cornChowder.jpg"
         },
         {
+            "id": 7,
             "name": "Carrot Ginger Soup",
             "image": "images/carrotGingerSoup.jpg"
         },
         {
+            "id": 8,
             "name": "Miso Soup",
             "image": "images/misoSoup.jpg"
         },
         {
+            "id": 9,
             "name": "Borscht",
             "image": "images/borscht.jpg"
         },
         {
+            "id": 10,
             "name": "Manhattan Clam Chowder",
             "image": "images/manhattanClamChowder.jpg"
         },
         {
+            "id": 11,
             "name": "Chicken Tortilla Soup",
             "image": "images/chickenTortillaSoup.jpg"
         },
         {
+            "id": 12,
             "name": "Spicy Kale Soup",
             "image": "images/spicyKaleSoup.jpg"
         },
         {
+            "id": 13,
             "name": "French Onion Soup",
             "image": "images/frenchOnionSoup.jpg"
         },
         {
+            "id": 14,
             "name": "Pazole Rojo",
             "image": "images/pazoleRojoSoup.jpg"
         },
         {
+            "id": 15,
             "name": "Chicken and Dumpling Soup",
             "image": "images/chickenDumplingSoup.jpg"
         },
         {
+            "id": 16,
             "name": "Split Pea Soup",
             "image": "images/splitPeaSoup.jpg"
         },
         {
+            "id": 17,
             "name": "Black Bean Soup",
             "image": "images/blackBeanSoup.jpg"
         },
         {
+            "id": 18,
             "name": "Cioppino",
             "image": "images/cioppinoSoup.jpg"
         }
     ],
     "articles": [
         {
-            "title": "New England Chowder vs Manhattan Clam Chowder"
+            "id": 0,
+            "title": "New England Clam Chowder vs Manhattan Clam Chowder",
+            "description": "Cast your vote for which clam chowder is best!"
         },
         {
-            "title": "Top Winter Soups"
+            "id": 1,
+            "title": "Top Winter Soups",
+            "description": "The perfect pairings for the colder months."
         },
         {
-            "title": "When is it chilly enough for chili?"
+            "id": 2,
+            "title": "When is it chilly enough for chili?",
+            "description": "Is chili only for cold camping nights, or is it okay to have it year-round?"
         },
         {
-            "title": "What your favorite soup says about you..."
+            "id": 3,
+            "title": "What your favorite soup says about you...",
+            "description": "Find out what it is about you that makes you like your favorite soup."
         },
         {
-            "title": "Why Ramen Is The Best"
+            "id": 4,
+            "title": "Why Ramen Is The Best",
+            "description": "Seriously, we love all soups, but there is a clear winner."
         }
     ]
 }
