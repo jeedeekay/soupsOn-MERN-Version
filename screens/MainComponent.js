@@ -49,13 +49,13 @@ const RecipeNavigator = () => {
             <Stack.Screen
                 name='Recipes'
                 component={RecipeScreen}
-                options={{
+                options={({ navigation }) => ({
                     title: <Header />,
                     headerTitleAlign: 'center',
                     headerTitleStyle:{
                         padding: 10,
                     }
-                }}                    
+                })}                   
             />
             <Stack.Screen
                 name='RecipeInfo'
