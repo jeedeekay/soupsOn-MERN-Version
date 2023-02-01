@@ -9,6 +9,7 @@ const favoritesSlice = createSlice({
                 return favorites.filter((favorite) => favorite !== action.payload);
             } else {
                 favorites.push(action.payload);
+                console.log(favorites);
             }
         }
     }
