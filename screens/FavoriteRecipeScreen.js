@@ -2,21 +2,13 @@ import { View, Text, FlatList } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { baseUrl } from '../../shared/baseUrl';
-import { toggleFavorite } from './favoritesSlice';
 
-const FavoriteRecipes = ({ navigation }) => {
+const FavoriteRecipeScreen = ({ navigation }) => {
     const { recipesArray, isLoading, errMess } = useSelector(
         (state) => state.recipes
     );
     const favorites = useSelector((state) => state.favorites);
     const dispatch = useDispatch();
-    const flatListArr = [];
-    const favoriteDisplay = () => {
-        for (let i = 0; i < 3; i++) {
-            flatListArr.push(favorites[i]);
-        }
-    };
-    favoriteDisplay();
 
     const renderFavoriteRecipe = ({ item: recipe }) => {
         return (
@@ -50,7 +42,7 @@ const FavoriteRecipes = ({ navigation }) => {
                 backgroundColor: '#bbb'
             }}
             data={recipesArray.filter((recipe) => 
-                flatListArr.includes(recipe.name)
+                favorites.includes(recipe.name)
             )}
             renderItem={renderFavoriteRecipe}
             keyExtractor={(item) => item.id.toString()}
@@ -58,4 +50,4 @@ const FavoriteRecipes = ({ navigation }) => {
     );
 };
 
-export default FavoriteRecipes;
+export default FavoriteRecipeScreen;
