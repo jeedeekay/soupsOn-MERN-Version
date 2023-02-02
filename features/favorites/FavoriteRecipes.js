@@ -1,20 +1,23 @@
 import { View, Text, FlatList } from 'react-native';
-import { ListItem, Avatar } from 'react-native-elements';
+import { ListItem, Avatar, Button } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { baseUrl } from '../../shared/baseUrl';
-import { toggleFavorite } from './favoritesSlice';
+import { toggleFavorite } from './favoriteRecipesSlice';
 
 const FavoriteRecipes = ({ navigation }) => {
     const { recipesArray, isLoading, errMess } = useSelector(
         (state) => state.recipes
     );
-    const favorites = useSelector((state) => state.favorites);
+    const favorites = useSelector((state) => state.favRecipes);
     const dispatch = useDispatch();
     const flatListArr = [];
     const favoriteDisplay = () => {
         for (let i = 0; i < 3; i++) {
-            flatListArr.push(favorites[i]);
+            if (favorites[i]) {
+                flatListArr.push(favorites[i]);
+            }
         }
+        console.log('DISPLAY: ', flatListArr);
     };
     favoriteDisplay();
 
@@ -54,6 +57,12 @@ const FavoriteRecipes = ({ navigation }) => {
             )}
             renderItem={renderFavoriteRecipe}
             keyExtractor={(item) => item.id.toString()}
+            ListFooterComponent={
+                <Button
+                    title='see all recipes'
+                    onPress={() => navigation.navigate('FavoriteRecipe')}
+                />
+            }
         />
     );
 };

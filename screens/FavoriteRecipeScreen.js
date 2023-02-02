@@ -1,13 +1,13 @@
 import { View, Text, FlatList } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
-import { baseUrl } from '../../shared/baseUrl';
+import { baseUrl } from '../shared/baseUrl';
 
 const FavoriteRecipeScreen = ({ navigation }) => {
     const { recipesArray, isLoading, errMess } = useSelector(
         (state) => state.recipes
     );
-    const favorites = useSelector((state) => state.favorites);
+    const favorites = useSelector((state) => state.favRecipes);
     const dispatch = useDispatch();
 
     const renderFavoriteRecipe = ({ item: recipe }) => {
@@ -30,17 +30,6 @@ const FavoriteRecipeScreen = ({ navigation }) => {
 
     return (
         <FlatList
-            ListHeaderComponent={
-                <Text
-                    style={{
-                        fontSize: 24,
-                        marginLeft: 20
-                    }}
-                >Saved Recipes</Text>
-            }
-            ListHeaderComponentStyle={{
-                backgroundColor: '#bbb'
-            }}
             data={recipesArray.filter((recipe) => 
                 favorites.includes(recipe.name)
             )}

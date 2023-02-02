@@ -1,5 +1,5 @@
-import { View, Text, FlatList } from 'react-native';
-import { ListItem, Avatar, Icon, Card } from 'react-native-elements';
+import { View, Text, FlatList, ScrollView } from 'react-native';
+import { ListItem, Avatar, Icon, Card, Button } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import FavoriteRecipes from '../features/favorites/FavoriteRecipes';
@@ -12,7 +12,7 @@ const UserScreen = ({ navigation }) => {
         <View>
             <View>
                 <Card
-                containerStyle={{ marginBottom: 20 }}
+                    containerStyle={{ marginBottom: 20 }}
                 >
                     <Avatar
                         size='large'
@@ -21,13 +21,13 @@ const UserScreen = ({ navigation }) => {
                         iconStyle={{ color: 'black' }}
                         containerStyle={{ backgroundColor: '#ccc', borderColor: '#999', borderWidth: 1, margin: 10, alignSelf: 'center' }}
                     />
-                <Card.Title>Username</Card.Title>
-                <Text
-                    style={{ justifyContent: 'center', alignSelf:'center' }}
-                >
-                    The user profile goes here. Users can add a bio about themselves and talk about their soup mission.
-                </Text>
-            </Card>
+                    <Card.Title>Username</Card.Title>
+                    <Text
+                        style={{ justifyContent: 'center', alignSelf:'center' }}
+                    >
+                        The user profile goes here. Users can add a bio about themselves and talk about their soup mission.
+                    </Text>
+                </Card>
             </View>
             
             <View>

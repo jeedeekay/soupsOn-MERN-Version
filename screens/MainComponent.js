@@ -5,6 +5,8 @@ import ArticleScreen from './ArticleScreen';
 import UserScreen from './UserScreen';
 import RecipeInfoScreen from './RecipeInfoScreen';
 import ArticleInfoScreen from './ArticleInfoScreen';
+import FavoriteRecipeScreen from './FavoriteRecipeScreen';
+import FavoriteArticleScreen from './FavoriteArticleScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -101,6 +103,28 @@ const UserNavigator = () => {
             <Stack.Screen
                 name='User'
                 component={UserScreen}
+                options={{
+                    title: <Header />,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle:{
+                        padding: 10
+                    }
+                }}
+            />
+            <Stack.Screen
+                name='FavoriteRecipe'
+                component={FavoriteRecipeScreen}
+                options={{
+                    title: <Header />,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle:{
+                        padding: 10
+                    }
+                }}
+            />
+            <Stack.Screen
+                name='FavoriteArticle'
+                component={FavoriteArticleScreen}
                 options={{
                     title: <Header />,
                     headerTitleAlign: 'center',

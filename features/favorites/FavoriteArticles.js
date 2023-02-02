@@ -1,13 +1,23 @@
 import { View, Text, FlatList } from 'react-native';
-import { ListItem, Avatar } from 'react-native-elements';
+import { ListItem, Avatar, Button } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 
 const FavoriteArticles = ({ navigation }) => {
     const { articlesArray, isLoading, errMess } = useSelector(
         (state) => state.articles
     );
-    const favorites = useSelector((state) => state.favorites);
+    const favorites = useSelector((state) => state.favArticles);
     const dispatch = useDispatch();
+    const flatListArr = [];
+    const favoriteDisplay = () => {
+        for (let i = 0; i < 3; i++) {
+            if (favorites[i]) {
+                flatListArr.push(favorites[i]);
+            }
+        }
+        console.log('DISPLAY: ', flatListArr);
+    };
+    favoriteDisplay();
 
     const renderFavoriteArticle = ({ item: article }) => {
         return (
@@ -43,10 +53,16 @@ const FavoriteArticles = ({ navigation }) => {
                 marginTop: 20
             }}
             data={articlesArray.filter((article) =>
-                favorites.includes(article.title)
+                flatListArr.includes(article.title)
                 )}
             renderItem={renderFavoriteArticle}
             keyExtractor={(item) => item.id.toString()}
+            ListFooterComponent={
+                <Button
+                    title='see all articles'
+                    onPress={() => navigation.navigate('FavoriteArticle')}
+                />
+            }
         />
     );
 };

@@ -57,8 +57,9 @@
         },
         {
             "id": 11,
-            "name": "Chicken Tortilla Soup",
-            "image": "images/chickenTortillaSoup.jpg"
+            "name": "Greg's Chicken and Rice Soup",
+            "image": "images/gregChickenRice.jpg",
+            "featured": true
         },
         {
             "id": 12,
@@ -94,13 +95,19 @@
             "id": 18,
             "name": "Cioppino",
             "image": "images/cioppinoSoup.jpg"
+        },
+        {
+            "id": 19,
+            "name": "Chicken Tortilla Soup",
+            "image": "images/chickenTortillaSoup.jpg"
         }
     ],
     "articles": [
         {
             "id": 0,
             "title": "New England Clam Chowder vs Manhattan Clam Chowder",
-            "description": "Cast your vote for which clam chowder is best!"
+            "description": "Cast your vote for which clam chowder is best!",
+            "featured": true
         },
         {
             "id": 1,
@@ -121,6 +128,13 @@
             "id": 4,
             "title": "Why Ramen Is The Best",
             "description": "Seriously, we love all soups, but there is a clear winner."
+        }
+    ],
+    "users": [
+        {
+            "name": "test",
+            "savedRecipes": [],
+            "savedArticles": []
         }
     ]
 }

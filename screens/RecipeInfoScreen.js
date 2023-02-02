@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { ScrollView, Card, Text, View } from 'react-native';
 import RenderRecipe from '../features/recipes/RenderRecipes';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleFavorite } from '../features/favorites/favoritesSlice';
+import { toggleFavorite } from '../features/favorites/favoriteRecipesSlice';
 
 const RecipeInfoScreen = ({ route }) => {
     const { recipe } = route.params;
-    const favorite = useSelector((state) => state.favorites);
+    const favRecipes = useSelector((state) => state.favRecipes);
     const dispatch = useDispatch();
 
     return (
         <ScrollView>
             <RenderRecipe
                 recipe={recipe}
-                isFavorite={favorite.includes(recipe.name)}
+                isFavorite={favRecipes.includes(recipe.name)}
                 markFavorite={() => dispatch(toggleFavorite(recipe.name))}
             />
         </ScrollView>
