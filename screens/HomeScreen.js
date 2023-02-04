@@ -61,12 +61,13 @@ const HomeScreen = ({ navigation }) => {
 
     const featRecipe = recipes.recipesArray.find((item) => item.featured);
     const featArticle = articles.articlesArray.find((item) => item.featured);
+    console.log(featRecipe);
 
     return (
         <ScrollView>
             <TouchableOpacity
                 onPress={() =>
-                    navigation.navigate('Recipe', { featRecipe })
+                    navigation.navigate('RecipeInfo', { recipe: featRecipe })
                 }  
             >
                 <FeaturedItem
@@ -74,7 +75,7 @@ const HomeScreen = ({ navigation }) => {
                 />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => navigation.navigate('Article')}
+                onPress={() => navigation.navigate('ArticleInfo', { article: featArticle })}
             >
                 <FeaturedItem
                     item={featArticle}

@@ -9,7 +9,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const UserScreen = ({ navigation }) => {
 
     return (
-        <View>
+        <ScrollView>
             <View>
                 <Card
                     containerStyle={{ marginBottom: 20 }}
@@ -34,7 +34,7 @@ const UserScreen = ({ navigation }) => {
                 <FavoriteRecipes navigation={navigation}/>
                 <FavoriteArticles navigation={navigation}/>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 

@@ -39,6 +39,16 @@ const HomeNavigator = () => {
                     }
                 }}                    
             />
+            <Stack.Screen
+                name='RecipeInfo'
+                component={RecipeInfoScreen}
+                options={({ route }) => ({ title: route.params.recipe.name })}
+            />
+            <Stack.Screen
+                name='ArticleInfo'
+                component={ArticleInfoScreen}
+                options={({ route }) => ({ title: route.params.article.name })}
+            />
         </Stack.Navigator>
     );
 };
