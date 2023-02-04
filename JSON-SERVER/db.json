@@ -3,138 +3,323 @@
         {
             "id": 0,
             "name": "Tomato Soup",
-            "image": "images/tomatoSoup.jpg"
+            "image": "images/tomatoSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 1,
             "name": "New England Clam Chowder",
-            "image": "images/newEnglandClamChowder.jpg"
+            "image": "images/newEnglandClamChowder.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 2,
             "name": "Lentil Soup",
-            "image": "images/lentilSoup.jpg"
+            "image": "images/lentilSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 3,
             "name": "Crab Bisque",
-            "image": "images/crabBisque.jpg"
+            "image": "images/crabBisque.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 4,
             "name": "Minestrone",
-            "image": "images/minestroneSoup.jpg"
+            "image": "images/minestroneSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 5,
             "name": "Butternut Squash Soup",
-            "image": "images/butternutSquashSoup.jpg"
+            "image": "images/butternutSquashSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 6,
             "name": "Corn Chowder",
-            "image": "images/cornChowder.jpg"
+            "image": "images/cornChowder.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 7,
             "name": "Carrot Ginger Soup",
-            "image": "images/carrotGingerSoup.jpg"
+            "image": "images/carrotGingerSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 8,
             "name": "Miso Soup",
-            "image": "images/misoSoup.jpg"
+            "image": "images/misoSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 9,
             "name": "Borscht",
-            "image": "images/borscht.jpg"
+            "image": "images/borscht.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 10,
             "name": "Manhattan Clam Chowder",
-            "image": "images/manhattanClamChowder.jpg"
+            "image": "images/manhattanClamChowder.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 11,
             "name": "Greg's Chicken and Rice Soup",
             "image": "images/gregChickenRice.jpg",
-            "featured": true
+            "featured": true,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 12,
             "name": "Spicy Kale Soup",
-            "image": "images/spicyKaleSoup.jpg"
+            "image": "images/spicyKaleSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 13,
             "name": "French Onion Soup",
-            "image": "images/frenchOnionSoup.jpg"
+            "image": "images/frenchOnionSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 14,
             "name": "Pazole Rojo",
-            "image": "images/pazoleRojoSoup.jpg"
+            "image": "images/pazoleRojoSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 15,
             "name": "Chicken and Dumpling Soup",
-            "image": "images/chickenDumplingSoup.jpg"
+            "image": "images/chickenDumplingSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 16,
             "name": "Split Pea Soup",
-            "image": "images/splitPeaSoup.jpg"
+            "image": "images/splitPeaSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 17,
             "name": "Black Bean Soup",
-            "image": "images/blackBeanSoup.jpg"
+            "image": "images/blackBeanSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 18,
             "name": "Cioppino",
-            "image": "images/cioppinoSoup.jpg"
+            "image": "images/cioppinoSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 19,
             "name": "Chicken Tortilla Soup",
-            "image": "images/chickenTortillaSoup.jpg"
+            "image": "images/chickenTortillaSoup.jpg",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }
     ],
     "articles": [
         {
             "id": 0,
-            "title": "New England Clam Chowder vs Manhattan Clam Chowder",
-            "description": "Cast your vote for which clam chowder is best!",
-            "featured": true
+            "name": "New England Clam Chowder vs Manhattan Clam Chowder",
+            "description": "Why you're wrong or right about which one is best!",
+            "image": "images/vsClamChowder.png",
+            "featured": true,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 1,
-            "title": "Top Winter Soups",
-            "description": "The perfect pairings for the colder months."
+            "name": "Top Winter Soups",
+            "description": "The perfect pairings for the colder months.",
+            "image": "images/winterSoups.jpg",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 2,
-            "title": "When is it chilly enough for chili?",
-            "description": "Is chili only for cold camping nights, or is it okay to have it year-round?"
+            "name": "When is it chilly enough for chili?",
+            "description": "Is chili only for cold camping nights, or is it okay to have it year-round?",
+            "image": "images/kevinChili.png",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 3,
-            "title": "What your favorite soup says about you...",
-            "description": "Find out what it is about you that makes you like your favorite soup."
+            "name": "What your favorite soup says about you...",
+            "description": "Find out what it is about you that makes you like your favorite soup.",
+            "image": "images/mysterySoup.JPG",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
             "id": 4,
-            "title": "Why Ramen Is The Best",
-            "description": "Seriously, we love all soups, but there is a clear winner."
+            "name": "Why Ramen Is The Best",
+            "description": "Seriously, we love all soups, but there is a clear winner.",
+            "image": "images/ramenBest.jpg",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }
     ],
-    "users": [
+    "comments": [
         {
-            "name": "test",
-            "savedRecipes": [],
-            "savedArticles": []
+            "id": 0,
+            "recipeId": 0,
+            "rating": 4,
+            "text": "I sure do like this tomato soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 1,
+            "recipeId": 1,
+            "rating": 4,
+            "text": "I sure do like this New England Clam Chowder recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 2,
+            "recipeId": 2,
+            "rating": 4,
+            "text": "I sure do like this Lentil Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 3,
+            "recipeId": 3,
+            "rating": 4,
+            "text": "I sure do like this Crab Bisque recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 4,
+            "recipeId": 4,
+            "rating": 4,
+            "text": "I sure do like this Minestrone recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 5,
+            "recipeId": 5,
+            "rating": 4,
+            "text": "I sure do like this Butternut Squash Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 6,
+            "recipeId": 6,
+            "rating": 4,
+            "text": "I sure do like this Corn Chowder recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 7,
+            "recipeId": 7,
+            "rating": 4,
+            "text": "I sure do like this Carrot Ginger Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 8,
+            "recipeId": 8,
+            "rating": 4,
+            "text": "I sure do like this Miso Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 9,
+            "recipeId": 9,
+            "rating": 4,
+            "text": "I sure do like this Borscht recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 10,
+            "recipeId": 10,
+            "rating": 4,
+            "text": "I sure do like this Manhattan Clam Chowder recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 11,
+            "recipeId": 11,
+            "rating": 5,
+            "text": "Greg makes better soup than I could ever hope to make.",
+            "author": "Gordon Ramsey",
+            "date": "2023-2-1T16:30Z"
+        },
+        {
+            "id": 12,
+            "recipeId": 12,
+            "rating": 4,
+            "text": "I sure do like this Spicy Kale Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 13,
+            "recipeId": 13,
+            "rating": 4,
+            "text": "I sure do like this French Onion Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 14,
+            "recipeId": 14,
+            "rating": 4,
+            "text": "I sure do like this Pazole Rojo recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 15,
+            "recipeId": 15,
+            "rating": 4,
+            "text": "I sure do like this Chicken and Dumpling Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 16,
+            "recipeId": 16,
+            "rating": 4,
+            "text": "I sure do like this Split Pea Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 17,
+            "recipeId": 17,
+            "rating": 4,
+            "text": "I sure do like this Black Bean Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 18,
+            "recipeId": 18,
+            "rating": 4,
+            "text": "I sure do like this Cioppino recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
+        },
+        {
+            "id": 19,
+            "recipeId": 19,
+            "rating": 4,
+            "text": "I sure do like this Chicken Tortilla Soup recipe.",
+            "author": "Gordon Ramsey",
+            "date": "2018-10-25T16:30Z"
         }
     ]
 }

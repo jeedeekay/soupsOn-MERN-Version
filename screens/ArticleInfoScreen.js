@@ -13,8 +13,8 @@ const ArticleInfoScreen = ({ route }) => {
         <ScrollView>
             <RenderArticle
                 article={article}
-                isFavorite={favArticles.includes(article.title)}
-                markFavorite={() => dispatch(toggleFavArticle(article.title))}
+                isFavorite={favArticles.includes(article.name)}
+                markFavorite={() => dispatch(toggleFavArticle(article.name))}
             />
         </ScrollView>
     )

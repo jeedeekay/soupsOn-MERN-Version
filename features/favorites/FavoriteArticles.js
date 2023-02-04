@@ -30,7 +30,7 @@ const FavoriteArticles = ({ navigation }) => {
                 >
                     {/* <Avatar rounded source={{ uri: baseUrl + article.image }} /> */}
                     <ListItem.Content>
-                        <ListItem.Title>{article.title}</ListItem.Title>
+                        <ListItem.Title>{article.name}</ListItem.Title>
                         <ListItem.Subtitle>{article.description}</ListItem.Subtitle>
                     </ListItem.Content>
                 </ListItem>
@@ -53,7 +53,7 @@ const FavoriteArticles = ({ navigation }) => {
                 marginTop: 20
             }}
             data={articlesArray.filter((article) =>
-                flatListArr.includes(article.title)
+                flatListArr.includes(article.name)
                 )}
             renderItem={renderFavoriteArticle}
             keyExtractor={(item) => item.id.toString()}

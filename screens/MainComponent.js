@@ -16,6 +16,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Header from '../components/Header';
 import { fetchRecipes } from '../features/recipes/recipesSlice';
 import { fetchArticles } from '../features/articles/articlesSlice';
+import { fetchComments } from '../features/comments/commentsSlice';
 
 const screenOptions = {
     headerStyle: { backgroundColor: '#f5c242' }
@@ -49,15 +50,15 @@ const RecipeNavigator = () => {
             screenOptions={screenOptions}
         >
             <Stack.Screen
-                name='Recipes'
+                name='Recipe'
                 component={RecipeScreen}
-                options={({ navigation }) => ({
+                options={{
                     title: <Header />,
                     headerTitleAlign: 'center',
                     headerTitleStyle:{
-                        padding: 10,
+                        padding: 10
                     }
-                })}                   
+                }}                   
             />
             <Stack.Screen
                 name='RecipeInfo'
@@ -88,7 +89,7 @@ const ArticleNavigator = () => {
             <Stack.Screen
                 name='ArticleInfo'
                 component={ArticleInfoScreen}
-                options={({ route }) => ({ title: route.params.article.title })}
+                options={({ route }) => ({ title: route.params.article.name })}
             />
         </Stack.Navigator>
     );
@@ -139,10 +140,10 @@ const UserNavigator = () => {
 
 const Main = () => {
     const dispatch = useDispatch();
-    dispatch(fetchRecipes());
-    dispatch(fetchArticles());
     useEffect(() => {
-
+        dispatch(fetchRecipes());
+        dispatch(fetchArticles());
+        dispatch(fetchComments());
     }, [dispatch])
 
     const Tab = createMaterialBottomTabNavigator();

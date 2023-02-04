@@ -20,7 +20,7 @@ const FavoriteArticleScreen = ({ navigation }) => {
                     })}
                 >
                     <ListItem.Content>
-                        <ListItem.Title>{article.title}</ListItem.Title>
+                        <ListItem.Title>{article.name}</ListItem.Title>
                         <ListItem.Subtitle>{article.description}</ListItem.Subtitle>
                     </ListItem.Content>
                 </ListItem>
@@ -31,7 +31,7 @@ const FavoriteArticleScreen = ({ navigation }) => {
     return (
         <FlatList
             data={articlesArray.filter((article) => 
-                favorites.includes(article.title)
+                favorites.includes(article.name)
             )}
             renderItem={renderFavoriteArticle}
             keyExtractor={(item) => item.id.toString()}

@@ -30,9 +30,24 @@ const ArticleScreen = ({ navigation }) => {
                 <TouchableOpacity
                     onPress={() => navigation.navigate('ArticleInfo', { article })}
                 >
-                    <Card>
+                    <Card
+                        containerStyle={{
+                            borderColor: '#ffe196',
+                            borderWidth: 10,
+                            borderRadius: 50,
+                            shadowColor: "#000",
+                            shadowOffset: {
+                                width: 0,
+                                height: 2,
+                            },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 3.84,
+                            elevation: 5,
+                            marginBottom: 5
+                        }}
+                    >
                         <Card.Title>
-                            {article.title}
+                            {article.name}
                         </Card.Title>
                         <Text>
                             {article.description}
