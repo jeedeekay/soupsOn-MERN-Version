@@ -1,10 +1,7 @@
-import { View, Text, FlatList, ScrollView } from 'react-native';
-import { ListItem, Avatar, Icon, Card, Button } from 'react-native-elements';
-import { useDispatch, useSelector } from 'react-redux';
-import { baseUrl } from '../shared/baseUrl';
+import { View, Text, ScrollView } from 'react-native';
+import { Avatar, Card } from 'react-native-elements';
 import FavoriteRecipes from '../features/favorites/FavoriteRecipes';
 import FavoriteArticles from '../features/favorites/FavoriteArticles';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const UserScreen = ({ navigation }) => {
 

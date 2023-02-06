@@ -5,9 +5,7 @@ import {
 } from 'react-native';
 import { Card } from 'react-native-elements';
 import { useSelector } from 'react-redux';
-import { baseUrl } from '../shared/baseUrl';
 import Loading from '../components/Loading';
-import * as Animatable from 'react-native-animatable';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ArticleScreen = ({ navigation }) => {

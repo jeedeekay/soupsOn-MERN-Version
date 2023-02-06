@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { ScrollView, Card, Text, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import RenderArticle from '../features/articles/RenderArticles';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleFavArticle } from '../features/favorites/favoriteArticlesSlice';

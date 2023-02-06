@@ -1,14 +1,13 @@
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 
 const FavoriteRecipeScreen = ({ navigation }) => {
-    const { recipesArray, isLoading, errMess } = useSelector(
+    const { recipesArray } = useSelector(
         (state) => state.recipes
     );
     const favorites = useSelector((state) => state.favRecipes);
-    const dispatch = useDispatch();
 
     const renderFavoriteRecipe = ({ item: recipe }) => {
         return (

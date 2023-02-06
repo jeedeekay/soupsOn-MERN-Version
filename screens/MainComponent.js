@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import HomeScreen from './HomeScreen';
 import RecipeScreen from './RecipeScreen';
 import ArticleScreen from './ArticleScreen';
@@ -11,7 +10,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { Icon } from 'react-native-elements/dist/icons/Icon';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Header from '../components/Header';
 import { fetchRecipes } from '../features/recipes/recipesSlice';

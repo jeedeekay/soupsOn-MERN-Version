@@ -7,7 +7,6 @@ import { Tile } from 'react-native-elements';
 import { useSelector } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import Loading from '../components/Loading';
-import * as Animatable from 'react-native-animatable';
 
 const RecipeScreen = ({ navigation }) => {
     const recipes = useSelector((state) => state.recipes);

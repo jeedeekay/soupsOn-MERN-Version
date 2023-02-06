@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { Text, View, Share } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import { baseUrl } from '../../shared/baseUrl';
