@@ -33,7 +33,7 @@ const FavoriteRecipeScreen = ({ navigation }) => {
                 favorites.includes(recipe.name)
             )}
             renderItem={renderFavoriteRecipe}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item._id.toString()}
         />
     );
 };

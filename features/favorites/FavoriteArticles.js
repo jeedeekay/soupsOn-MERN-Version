@@ -56,7 +56,7 @@ const FavoriteArticles = ({ navigation }) => {
                 flatListArr.includes(article.name)
                 )}
             renderItem={renderFavoriteArticle}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item._id.toString()}
             ListFooterComponent={
                 <Button
                     title='see all articles'

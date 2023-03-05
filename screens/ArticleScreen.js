@@ -60,7 +60,7 @@ const ArticleScreen = ({ navigation }) => {
         <FlatList 
             data={articles.articlesArray}
             renderItem={renderArticleItem}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item._id.toString()}
         />
     );
 };

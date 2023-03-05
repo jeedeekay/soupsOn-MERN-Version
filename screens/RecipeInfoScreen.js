@@ -64,9 +64,9 @@ const RecipeInfoScreen = ({ route }) => {
     return (
         <View>
             <FlatList
-                data={comments.commentsArray.filter(
+                data={comments.commentsArray/*.filter(
                     (comment) => comment.recipeId === recipe.id
-                )}
+                )*/}
                 renderItem={renderCommentItem}
                 keyExtractor={(item) => item.id.toString()}
                 contentContainerStyle={{

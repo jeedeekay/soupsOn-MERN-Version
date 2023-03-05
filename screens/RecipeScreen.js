@@ -41,7 +41,7 @@ const RecipeScreen = ({ navigation }) => {
         <FlatList 
             data={recipes.recipesArray}
             renderItem={renderRecipeItem}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item._id.toString()}
         />
     );
 };

@@ -32,7 +32,7 @@ const FavoriteArticleScreen = ({ navigation }) => {
                 favorites.includes(article.name)
             )}
             renderItem={renderFavoriteArticle}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item._id.toString()}
         />
     );
 };
