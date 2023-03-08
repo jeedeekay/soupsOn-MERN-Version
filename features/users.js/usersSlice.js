@@ -44,18 +44,22 @@ export const registerUser = createAsyncThunk(
 
 const usersSlice = createSlice({
     name: 'users',
-    initialState: { isLoading: true, errMess: null, usersArray: [] },
-    reducers: {},
+    initialState: { isLoading: true, errMess: null, loggedIn: false },
+    reducers: {
+        loginCheck: (state, action) => {
+            state.loggedIn = action.payload;
+        }
+    },
     extraReducers: {
-        [fetchUsers.pending]: (state) => {
+        [loginUser.pending]: (state) => {
             state.isLoading = true;
         },
-        [fetchUsers.fulfilled]: (state, action) => {
+        [loginUser.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.errMess = null;
             state.commentsArray = action.payload;
         },
-        [fetchUsers.rejected]: (state, action) => {
+        [loginUser.rejected]: (state, action) => {
             state.isLoading = false;
             state.errMess = action.error
                 ? action.error.message
@@ -64,4 +68,5 @@ const usersSlice = createSlice({
     }
 });
 
+export const { loginCheck } = usersSlice.actions;
 export const usersReducer = usersSlice.reducer;

@@ -4,6 +4,7 @@ import { articlesReducer } from '../features/articles/articlesSlice';
 import { commentsReducer } from '../features/comments/commentsSlice';
 import { favoriteRecipesReducer } from '../features/favorites/favoriteRecipesSlice';
 import { favoriteArticlesReducer } from '../features/favorites/favoriteArticlesSlice';
+import { usersReducer } from '../features/users.js/usersSlice';
 import {
     persistStore,
     persistCombineReducers,
@@ -28,7 +29,8 @@ export const store = configureStore({
         articles: articlesReducer,
         comments: commentsReducer,
         favRecipes: favoriteRecipesReducer,
-        favArticles: favoriteArticlesReducer
+        favArticles: favoriteArticlesReducer,
+        users: usersReducer
     }),
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
