@@ -32,7 +32,7 @@ const RecipeInfoScreen = ({ route }) => {
             author,
             rating,
             text,
-            recipeId: recipe.id
+            recipeId: recipe._id
         };
         dispatch(postComment(newComment));
         setShowModal(!showModal);
@@ -64,11 +64,11 @@ const RecipeInfoScreen = ({ route }) => {
     return (
         <View>
             <FlatList
-                data={comments.commentsArray/*.filter(
-                    (comment) => comment.recipeId === recipe.id
-                )*/}
+                data={comments.commentsArray.filter(
+                    (comment) => comment.recipeId === recipe._id
+                )}
                 renderItem={renderCommentItem}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => item._id.toString()}
                 contentContainerStyle={{
                     marginHorizontal: 20,
                     paddingVertical: 20
