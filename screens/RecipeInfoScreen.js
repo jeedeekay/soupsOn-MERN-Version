@@ -68,7 +68,7 @@ const RecipeInfoScreen = ({ route }) => {
                     (comment) => comment.recipeId === recipe._id
                 )}
                 renderItem={renderCommentItem}
-                keyExtractor={(item) => item._id.toString()}
+                keyExtractor={(item) => item._id}
                 contentContainerStyle={{
                     marginHorizontal: 20,
                     paddingVertical: 20

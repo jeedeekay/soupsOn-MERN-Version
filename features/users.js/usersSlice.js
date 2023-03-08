@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { baseUrl } from '../../shared/baseUrl';
 
-export const fetchComments = createAsyncThunk(
-    'comments/fetchComments',
+export const loginUser = createAsyncThunk(
+    'comments/loginUser',
     async () => {
-        const response = await fetch(baseUrl + 'comments');
+        const response = await fetch(baseUrl + 'users');
         if (!response.ok) {
             return Promise.reject(
                 'Unable to fetch, status: ' + response.status
@@ -15,8 +15,8 @@ export const fetchComments = createAsyncThunk(
     }
 );
 
-export const postComment = createAsyncThunk(
-    'comments/postComment',
+export const registerUser = createAsyncThunk(
+    'comments/registerUser',
     async (payload, { dispatch, getState }) => {
         const options = {
             method: 'POST',
@@ -25,7 +25,7 @@ export const postComment = createAsyncThunk(
             },
             body: payload,
         };
-        const response = await fetch(baseUrl + 'comments', options);
+        const response = await fetch(baseUrl + 'users', options);
         if (!response.ok) {
             return Promise.reject(
                 'Unable to fetch, status: ' + response.status
@@ -42,24 +42,20 @@ export const postComment = createAsyncThunk(
     }
 )
 
-const commentsSlice = createSlice({
-    name: 'comments',
-    initialState: { isLoading: true, errMess: null, commentsArray: [] },
-    reducers: {
-        addComment: (state, action) => {
-            state.commentsArray.push(action.payload);
-        }
-    },
+const usersSlice = createSlice({
+    name: 'users',
+    initialState: { isLoading: true, errMess: null, usersArray: [] },
+    reducers: {},
     extraReducers: {
-        [fetchComments.pending]: (state) => {
+        [fetchUsers.pending]: (state) => {
             state.isLoading = true;
         },
-        [fetchComments.fulfilled]: (state, action) => {
+        [fetchUsers.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.errMess = null;
             state.commentsArray = action.payload;
         },
-        [fetchComments.rejected]: (state, action) => {
+        [fetchUsers.rejected]: (state, action) => {
             state.isLoading = false;
             state.errMess = action.error
                 ? action.error.message
@@ -68,5 +64,4 @@ const commentsSlice = createSlice({
     }
 });
 
-export const { addComment } = commentsSlice.actions;
-export const commentsReducer = commentsSlice.reducer;
+export const usersReducer = usersSlice.reducer;
