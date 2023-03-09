@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Modal } from 'react-native';
 import { Avatar, Card,CheckBox, Input, Button, Icon } from 'react-native-elements';
 import FavoriteRecipes from '../features/favorites/FavoriteRecipes';
 import FavoriteArticles from '../features/favorites/FavoriteArticles';
 import * as SecureStore from 'expo-secure-store';
 import { baseUrl } from '../shared/baseUrl';
 import { useDispatch } from 'react-redux';
-import { Modal } from 'react-native-paper';
 import { logout, loginCheck } from '../features/users.js/usersSlice';
 
 const UserScreen = ({ navigation }) => {
@@ -94,7 +93,7 @@ const UserScreen = ({ navigation }) => {
         });
     }, []);
         return (
-            <ScrollView>
+            <View>
                 <View>
                     <Card
                         containerStyle={{ marginBottom: 20 }}
@@ -113,24 +112,57 @@ const UserScreen = ({ navigation }) => {
                             The user profile goes here. Users can add a bio about themselves and talk about their soup mission.
                         </Text>
                     </Card>
-                    <Button onPress={() => {
-                        dispatch(logout());
-                        dispatch(loginCheck());
-                        navigation.navigate('Login');
-                        navigation.reset({
-                            index: 0,
-                            routes: [{ name: 'Login' }],
-                          });
-                    }}
-                    >
-                        </Button>
                 </View>
                 
                 <View>
                     <FavoriteRecipes navigation={navigation}/>
                     <FavoriteArticles navigation={navigation}/>
                 </View>
-            </ScrollView>
+                <View>
+                    <Button
+                        title='Logout' 
+                        onPress={() => setShowModal(!showModal)}
+                        //     dispatch(logout());
+                        //     dispatch(loginCheck());
+                        //     navigation.navigate('Login');
+                        //     navigation.reset({
+                        //         index: 0,
+                        //         routes: [{ name: 'Login' }],
+                        //     });
+                        // }}
+                        buttonStyle={{backgroundColor: 'red', marginTop: 30}}
+                />
+                </View>
+                <Modal
+                    transparent={false}
+                    visible={showModal}
+                    onRequestClose={() => setShowModal(!setShowModal)}
+                >
+                    <View
+                        style={{ alignItems: 'center', marginTop: 100}}
+                    >
+                        <Text>Are you sure you want to log out?</Text>
+                        <Button
+                            title='Logout' 
+                            onPress={() => {
+                                dispatch(logout());
+                                dispatch(loginCheck());
+                                navigation.navigate('Login');
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'Login' }],
+                                });
+                            }}
+                            buttonStyle={{backgroundColor: 'red', marginTop: 20}}
+                        />
+                        <Button
+                            title='Cancel'
+                            onPress={() => setShowModal(!showModal)}
+                            buttonStyle={{ marginTop: 10}}
+                        />
+                    </View>
+                </Modal>
+            </View>
         );
 };
 
@@ -156,7 +188,7 @@ const styles = StyleSheet.create({
     formButton: {
         marginTop: 20,
         marginRight: 40,
-        marginLeft: 40
+        marginLeft: 40,
     },
     imageContainer: {
         flex: 1,

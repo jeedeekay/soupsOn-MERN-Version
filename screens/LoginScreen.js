@@ -121,6 +121,7 @@ const LoginScreen = ({ navigation }) => {
                     value={username}
                 />
                 <Input
+                    secureTextEntry={true}
                     placeholder='Password'
                     leftIcon={{ type: 'font-awesome', name: 'key' }}
                     onChangeText={(text) => setPassword(text)}
@@ -151,7 +152,7 @@ const LoginScreen = ({ navigation }) => {
                         }
                         buttonStyle={{ backgroundColor: '#5637DD' }}
                     />
-                    <Button
+                    {/* <Button
                         onPress={() => {
                                 setLoggedIn(false);
                                 dispatch(logout());
@@ -169,7 +170,7 @@ const LoginScreen = ({ navigation }) => {
                             />
                         }
                         buttonStyle={{ backgroundColor: '#5637DD' }}
-                    />
+                    /> */}
                 </View>
                 <View>
                     <Button

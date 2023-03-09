@@ -11,7 +11,7 @@ const FavoriteRecipes = ({ navigation }) => {
 
     const flatListArr = [];
     const favoriteDisplay = () => {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 1; i++) {
             if (favorites[i]) {
                 flatListArr.push(favorites[i]);
             }
@@ -49,7 +49,8 @@ const FavoriteRecipes = ({ navigation }) => {
                 >Saved Recipes</Text>
             }
             ListHeaderComponentStyle={{
-                backgroundColor: '#bbb'
+                backgroundColor: '#bbb',
+                marginTop: 15
             }}
             data={recipesArray.filter((recipe) => 
                 flatListArr.includes(recipe.name)

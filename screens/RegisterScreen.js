@@ -77,6 +77,7 @@ const RegisterScreen = ({ navigation }) => {
                         leftIconContainerStyle={styles.formIcon}
                     />
                     <Input
+                        secureTextEntry={true}
                         placeholder='Password'
                         leftIcon={{ type: 'font-awesome', name: 'key' }}
                         onChangeText={(text) => setPassword(text)}

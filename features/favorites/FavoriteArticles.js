@@ -10,7 +10,7 @@ const FavoriteArticles = ({ navigation }) => {
 
     const flatListArr = [];
     const favoriteDisplay = () => {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 1; i++) {
             if (favorites[i]) {
                 flatListArr.push(favorites[i]);
             }
@@ -31,7 +31,7 @@ const FavoriteArticles = ({ navigation }) => {
                     {/* <Avatar rounded source={{ uri: baseUrl + article.image }} /> */}
                     <ListItem.Content>
                         <ListItem.Title>{article.name}</ListItem.Title>
-                        <ListItem.Subtitle>{article.description}</ListItem.Subtitle>
+                        {/* <ListItem.Subtitle>{article.description}</ListItem.Subtitle> */}
                     </ListItem.Content>
                 </ListItem>
             </View>
@@ -50,7 +50,7 @@ const FavoriteArticles = ({ navigation }) => {
             }
             ListHeaderComponentStyle={{
                 backgroundColor: '#bbb',
-                marginTop: 20
+                marginTop: 15
             }}
             data={articlesArray.filter((article) =>
                 flatListArr.includes(article.name)
