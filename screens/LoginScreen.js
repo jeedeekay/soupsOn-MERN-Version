@@ -113,7 +113,9 @@ const LoginScreen = ({ navigation }) => {
         });
     }, []);
         return (
-            <View>
+            <View
+                style={{ top: 100 }}
+            >
                 <Input
                     placeholder='Username'
                     leftIcon={{ type: 'font-awesome', name: 'user-o'}}
