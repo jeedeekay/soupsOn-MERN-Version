@@ -8,6 +8,8 @@ import { baseUrl } from '../shared/baseUrl';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'react-native-paper';
 import { loginCheck } from '../features/users.js/usersSlice';
+import { setLoginStatus } from '../features/users.js/usersSlice';
+import { logout } from '../features/users.js/usersSlice';
 
 const LoginScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
@@ -24,23 +26,50 @@ const LoginScreen = ({ navigation }) => {
         console.log('username:', username);
         console.log('password:', password);
         console.log('remember:', remember);
-        if (remember) {
-            SecureStore.setItemAsync(
-                'userinfo',
-                JSON.stringify({
-                    username,
-                    password
-                })
-            )
-            .catch(
-                (error) => console.log('Could not save user info', error)
-            )
-        } else {
-            SecureStore.deleteItemAsync('userinfo')
-            .catch(
-                (error) => console.log('Could not delete user info', error)
-            )
-        }
+
+        const payload = {
+            username,
+            password
+        };
+
+        console.log(payload);
+
+        fetch(baseUrl + 'users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload),
+        })
+        .then((response) => {
+            const goodCreds = response.status;
+            console.log('CREDS', goodCreds);
+            if (remember && goodCreds === 200) {
+                console.log('CLEARED PERSIST CHECK')
+                // SecureStore.setItemAsync(
+                //     'userinfo',
+                //     JSON.stringify({
+                //         username,
+                //         password
+                //     })
+                // )
+                // .catch(
+                //     (error) => console.log('Could not save user info', error)
+                // )
+                dispatch(setLoginStatus());
+                dispatch(loginCheck());
+                navigation.navigate('Content');
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'Content' }],
+                  });
+            } else {
+                SecureStore.deleteItemAsync('userinfo')
+                .catch(
+                    (error) => console.log('Could not delete user info', error)
+                )
+            }
+        })
     }
 
     const handleRegister = () => {
@@ -79,6 +108,7 @@ const LoginScreen = ({ navigation }) => {
                 setPassword(userinfo.password);
                 setRemember(true);
                 setLoggedIn(true);
+                console.log(userinfo, "LOGGED IN")
             }
         });
     }, []);
@@ -107,7 +137,6 @@ const LoginScreen = ({ navigation }) => {
                         onPress={() => {
                                 handleLogin();
                                 setLoggedIn(!loggedIn);
-                                dispatch(loginCheck());
                             }
                         }
                         title='Login'
@@ -115,6 +144,25 @@ const LoginScreen = ({ navigation }) => {
                         icon={
                             <Icon
                                 name='sign-in'
+                                type='font-awesome'
+                                color='#fff'
+                                iconStyle={{ marginRight: 10}}
+                            />
+                        }
+                        buttonStyle={{ backgroundColor: '#5637DD' }}
+                    />
+                    <Button
+                        onPress={() => {
+                                setLoggedIn(false);
+                                dispatch(logout());
+                                dispatch(loginCheck());
+                            }
+                        }
+                        title='Logout'
+                        color='#5637DD'
+                        icon={
+                            <Icon
+                                name='sign-out'
                                 type='font-awesome'
                                 color='#fff'
                                 iconStyle={{ marginRight: 10}}

@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
 
     const featRecipe = recipes.recipesArray.find((item) => item.featured);
     const featArticle = articles.articlesArray.find((item) => item.featured);
-    console.log(featRecipe);
+    // console.log(featRecipe);
 
     return (
         <ScrollView>

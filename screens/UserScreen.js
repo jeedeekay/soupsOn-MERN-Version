@@ -7,6 +7,7 @@ import * as SecureStore from 'expo-secure-store';
 import { baseUrl } from '../shared/baseUrl';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'react-native-paper';
+import { logout, loginCheck } from '../features/users.js/usersSlice';
 
 const UserScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
@@ -20,26 +21,37 @@ const UserScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
     const handleLogin = () => {
-        console.log('username:', username);
-        console.log('password:', password);
-        console.log('remember:', remember);
-        if (remember) {
-            SecureStore.setItemAsync(
-                'userinfo',
-                JSON.stringify({
-                    username,
-                    password
-                })
-            )
-            .catch(
-                (error) => console.log('Could not save user info', error)
-            )
-        } else {
-            SecureStore.deleteItemAsync('userinfo')
-            .catch(
-                (error) => console.log('Could not delete user info', error)
-            )
-        }
+        // console.log('username:', username);
+        // console.log('password:', password);
+        // console.log('remember:', remember);
+        // const payload = {
+        //     username,
+        //     password
+        // };
+        // fetch(baseUrl + 'users/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(payload),
+        // });
+        // if (remember) {
+        //     SecureStore.setItemAsync(
+        //         'userinfo',
+        //         JSON.stringify({
+        //             username,
+        //             password
+        //         })
+        //     )
+        //     .catch(
+        //         (error) => console.log('Could not save user info', error)
+        //     )
+        // } else {
+        //     SecureStore.deleteItemAsync('userinfo')
+        //     .catch(
+        //         (error) => console.log('Could not delete user info', error)
+        //     )
+        // }
     }
 
     const handleRegister = () => {
@@ -81,8 +93,6 @@ const UserScreen = ({ navigation }) => {
             }
         });
     }, []);
-
-    if (loggedIn) {
         return (
             <ScrollView>
                 <View>
@@ -103,7 +113,16 @@ const UserScreen = ({ navigation }) => {
                             The user profile goes here. Users can add a bio about themselves and talk about their soup mission.
                         </Text>
                     </Card>
-                    <Button onPress={() => dispatch(SecureStore.deleteItemAsync('userinfo'))}>
+                    <Button onPress={() => {
+                        dispatch(logout());
+                        dispatch(loginCheck());
+                        navigation.navigate('Login');
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'Login' }],
+                          });
+                    }}
+                    >
                         </Button>
                 </View>
                 
@@ -113,136 +132,6 @@ const UserScreen = ({ navigation }) => {
                 </View>
             </ScrollView>
         );
-    } else {
-        return (
-            <View>
-                <Input
-                    placeholder='Username'
-                    leftIcon={{ type: 'font-awesome', name: 'user-o'}}
-                    onChangeText={(text) => setUsername(text)}
-                    value={username}
-                />
-                <Input
-                    placeholder='Password'
-                    leftIcon={{ type: 'font-awesome', name: 'key' }}
-                    onChangeText={(text) => setPassword(text)}
-                    value={password}
-                />
-                <CheckBox
-                    title='Remember Me'
-                    center
-                    checked={remember}
-                    onPress={() => setRemember(!remember)}
-                />
-                <View>
-                    <Button
-                        onPress={() => handleLogin()}
-                        title='Login'
-                        color='#5637DD'
-                        icon={
-                            <Icon
-                                name='sign-in'
-                                type='font-awesome'
-                                color='#fff'
-                                iconStyle={{ marginRight: 10}}
-                            />
-                        }
-                        buttonStyle={{ backgroundColor: '#5637DD' }}
-                    />
-                </View>
-                <View>
-                    <Button
-                        onPress={() => setShowModal(!showModal)}
-                        title='Register'
-                        type='clear'
-                        icon={
-                            <Icon
-                                name='user-plus'
-                                type='font-awesome'
-                                color='blue'
-                                iconStyle={{ marginRight: 10}}
-                            />
-                        }
-                        buttonStyle={{ color: 'blue' }}
-                    />
-                </View>
-                <Modal
-                    transparent={false}
-                    visible={showModal}
-                    onRequestClose={() => setShowModal(!showModal)}
-                >
-                    <View>
-                        <View style={styles.container}>
-                            <Input
-                                placeholder='Username'
-                                leftIcon={{ type: 'font-awesome', name: 'user-o'}}
-                                onChangeText={(text) => setUsername(text)}
-                                value={username}
-                                containerStyle={styles.formInput}
-                                leftIconContainerStyle={styles.formIcon}
-                            />
-                            <Input
-                                placeholder='Password'
-                                leftIcon={{ type: 'font-awesome', name: 'key' }}
-                                onChangeText={(text) => setPassword(text)}
-                                value={password}
-                                containerStyle={styles.formInput}
-                                leftIconContainerStyle={styles.formIcon}
-                            />
-                            <Input
-                                placeholder='First Name'
-                                leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-                                onChangeText={(text) => setFirstName(text)}
-                                value={firstName}
-                                containerStyle={styles.formInput}
-                                leftIconContainerStyle={styles.formIcon}
-                            />
-                            <Input
-                                placeholder='Last Name'
-                                leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-                                onChangeText={(text) => setLastName(text)}
-                                value={lastName}
-                                containerStyle={styles.formInput}
-                                leftIconContainerStyle={styles.formIcon}
-                            />
-                            <CheckBox
-                                title='Remember Me'
-                                center
-                                checked={remember}
-                                onPress={() => setRemember(!remember)}
-                                style={styles.formCheckbox}
-                            />
-                            <View style={styles.formButton}>
-                                <Button
-                                    onPress={() => {
-                                        handleRegister();
-                                        setShowModal(!setShowModal);
-                                    }}
-                                    title='Register'
-                                    color='#5637DD'
-                                    icon={
-                                        <Icon
-                                            name='user-plus'
-                                            type='font-awesome'
-                                            color='#fff'
-                                            iconStyle={{ marginRight: 10}}
-                                        />
-                                    }
-                                    buttonStyle={{ backgroundColor: '#5637DD' }}
-                                />
-                            </View>
-                            <View style={styles.formButton}>
-                                <Button
-                                    onPress={() => setShowModal(!setShowModal)}
-                                    title='Cancel'
-                                />
-                            </View>
-                        </View>
-                    </View>
-                </Modal>
-            </View>
-        );
-    }
 };
 
 const styles = StyleSheet.create({

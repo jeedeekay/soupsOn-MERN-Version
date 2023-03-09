@@ -17,7 +17,8 @@ import Header from '../components/Header';
 import { fetchRecipes } from '../features/recipes/recipesSlice';
 import { fetchArticles } from '../features/articles/articlesSlice';
 import { fetchComments } from '../features/comments/commentsSlice';
-// import { loginUser } from '../features/users.js/usersSlice';
+import { loginCheck } from '../features/users.js/usersSlice';
+import { useSelector } from 'react-redux';
 
 const screenOptions = {
     headerStyle: { backgroundColor: '#f5c242' }
@@ -183,75 +184,77 @@ const LoginNavigator = () => {
 };
 
 const Main = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
-
+    const activeUser = useSelector((state) => state.users.loggedIn);
+    console.log('Active User: ', activeUser);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchRecipes());
         dispatch(fetchArticles());
         dispatch(fetchComments());
+        dispatch(loginCheck());
     }, [dispatch])
 
     const Tab = createMaterialBottomTabNavigator();
     const Stack = createStackNavigator();
-    if (loggedIn) {
-    return (
-        <Tab.Navigator
-            initialRouteName={"Home"}
-            activeColor="#ed4907"
-            barStyle={{ backgroundColor: '#f57542' }}
-            labeled={false}
-            inactiveColor='white'
-        >
-            <Tab.Screen
-                name='Home'
-                component={HomeNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name="home" color={color} size={26} />
-                    )
-                }}
-            />
-            <Tab.Screen
-                name='Recipe'
-                component={RecipeNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name="chef-hat" color={color} size={26} />
-                    )
-                }}
-            />
-            <Tab.Screen
-                name='Article'
-                component={ArticleNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name="book-open-page-variant" color={color} size={26} />
-                    )
-                }}
-            />
-            <Tab.Screen
-                name='User'
-                component={UserNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name="account" color={color} size={26} />
-                    )
-                }}
-            />
-        </Tab.Navigator>
-    );
-    } else {
+    const ContentNavigator = () => {
         return (
-        <Stack.Navigator
+            <Tab.Navigator
+                initialRouteName={"Home"}
+                activeColor="#ed4907"
+                barStyle={{ backgroundColor: '#f57542' }}
+                labeled={false}
+                inactiveColor='white'
+            >
+                <Tab.Screen
+                    name='Home'
+                    component={HomeNavigator}
+                    options={{
+                        tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="home" color={color} size={26} />
+                        )
+                    }}
+                />
+                <Tab.Screen
+                    name='Recipe'
+                    component={RecipeNavigator}
+                    options={{
+                        tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="chef-hat" color={color} size={26} />
+                        )
+                    }}
+                />
+                <Tab.Screen
+                    name='Article'
+                    component={ArticleNavigator}
+                    options={{
+                        tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="book-open-page-variant" color={color} size={26} />
+                        )
+                    }}
+                />
+                <Tab.Screen
+                    name='User'
+                    component={UserNavigator}
+                    options={{
+                        tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="account" color={color} size={26} />
+                        )
+                    }}
+                />
+            </Tab.Navigator>
+        );
+    };
+    return (
+    <Stack.Navigator
+        initialRouteName={activeUser ? "Content" : "Login"}
         screenOptions={{
             headerShown: false
-          }}
-        >
-            <Stack.Screen name='Login' component={LoginNavigator} />
-        </Stack.Navigator>
-        );
-    }
+            }}
+    >
+        <Stack.Screen name='Login' component={LoginNavigator} />
+        <Stack.Screen name='Content' component={ContentNavigator} />
+    </Stack.Navigator>
+    );
 };
 
 export default Main;

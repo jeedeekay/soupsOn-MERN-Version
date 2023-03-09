@@ -11,8 +11,8 @@ import { Modal } from 'react-native-paper';
 const RegisterScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastName] = useState('');
     const [remember, setRemember] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -21,30 +21,37 @@ const RegisterScreen = ({ navigation }) => {
 
     const handleRegister = () => {
         const userInfo = {
+            firstname,
+            lastname,
             username,
-            password,
-            firstName,
-            lastName,
-            remember
+            password
         };
-        console.log(JSON.stringify(userInfo));
-        if (remember) {
-            SecureStore.setItemAsync(
-                'userinfo',
-                JSON.stringify({
-                    username,
-                    password
-                })
-            )
-            .catch(
-                (error) => console.log('Could not save user info', error)
-            )
-        } else {
-            SecureStore.deleteItemAsync('userinfo')
-            .catch(
-                (error) => console.log('Could not delete user info', error)
-            )
-        }
+        console.log(userInfo);
+        fetch(baseUrl + 'users/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userInfo),
+        });
+        // console.log(JSON.stringify(userInfo));
+        // if (remember) {
+        //     SecureStore.setItemAsync(
+        //         'userinfo',
+        //         JSON.stringify({
+        //             username,
+        //             password
+        //         })
+        //     )
+        //     .catch(
+        //         (error) => console.log('Could not save user info', error)
+        //     )
+        // } else {
+        //     SecureStore.deleteItemAsync('userinfo')
+        //     .catch(
+        //         (error) => console.log('Could not delete user info', error)
+        //     )
+        // }
     }
 
     useEffect(() => {
@@ -81,7 +88,7 @@ const RegisterScreen = ({ navigation }) => {
                         placeholder='First Name'
                         leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                         onChangeText={(text) => setFirstName(text)}
-                        value={firstName}
+                        value={firstname}
                         containerStyle={styles.formInput}
                         leftIconContainerStyle={styles.formIcon}
                     />
@@ -89,7 +96,7 @@ const RegisterScreen = ({ navigation }) => {
                         placeholder='Last Name'
                         leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                         onChangeText={(text) => setLastName(text)}
-                        value={lastName}
+                        value={lastname}
                         containerStyle={styles.formInput}
                         leftIconContainerStyle={styles.formIcon}
                     />
