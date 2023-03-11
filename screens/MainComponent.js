@@ -8,6 +8,7 @@ import FavoriteRecipeScreen from './FavoriteRecipeScreen';
 import FavoriteArticleScreen from './FavoriteArticleScreen';
 import RegisterScreen from './RegisterScreen';
 import LoginScreen from './LoginScreen';
+import CommentsScreen from './CommentsScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -51,6 +52,11 @@ const HomeNavigator = () => {
                 component={ArticleInfoScreen}
                 options={({ route }) => ({ title: route.params.article.name })}
             />
+            <Stack.Screen
+                name='Comments'
+                component={CommentsScreen}
+                options={({ route }) => ({ title: route.params.recipe.name })}
+            />
         </Stack.Navigator>
     );
 };
@@ -75,6 +81,11 @@ const RecipeNavigator = () => {
             <Stack.Screen
                 name='RecipeInfo'
                 component={RecipeInfoScreen}
+                options={({ route }) => ({ title: route.params.recipe.name })}
+            />
+            <Stack.Screen
+                name='Comments'
+                component={CommentsScreen}
                 options={({ route }) => ({ title: route.params.recipe.name })}
             />
         </Stack.Navigator>

@@ -1,49 +1,23 @@
-import { useState } from 'react';
 import {
-    ScrollView,
-    Card,
-    Text,
     View,
+    Text,
     Button,
     Modal,
     FlatList,
-    StyleSheet
-} from 'react-native';
-import { Input, Rating } from 'react-native-elements';
-import RenderRecipe from '../features/recipes/RenderRecipes';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleFavorite } from '../features/favorites/favoriteRecipesSlice';
+    StyleSheet } from 'react-native';
+import { ListItem, Avatar, Input, Rating } from 'react-native-elements';
+import { baseUrl } from '../shared/baseUrl';
+import { useState } from 'react';
 import { postComment } from '../features/comments/commentsSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
-const RecipeInfoScreen = ({ route, navigation }) => {
-    console.log(route.params);
+const CommentsScreen = ({ route }) => {
     const { recipe } = route.params;
-    const recipeId = recipe._id;
     const comments = useSelector((state) => state.comments);
-    const favRecipes = useSelector((state) => state.favRecipes);
-    const dispatch = useDispatch();
-
     const [showModal, setShowModal] = useState(false);
     const [rating, setRating] = useState(5);
     const [author, setAuthor] = useState('');
     const [text, setText] = useState('');
-
-    const handleSubmit = () => {
-        const newComment = {
-            author,
-            rating,
-            text,
-            recipeId: recipe._id
-        };
-        dispatch(postComment(newComment));
-        setShowModal(!showModal);
-    };
-
-    const resetForm = () => {
-        setRating(5);
-        setAuthor('');
-        setText('');
-    };
 
     const renderCommentItem = ({ item }) => {
         return (
@@ -74,27 +48,9 @@ const RecipeInfoScreen = ({ route, navigation }) => {
                     marginHorizontal: 20,
                     paddingVertical: 20
                 }}
-                ListHeaderComponent={
-                    <>
-                        <RenderRecipe
-                            recipe={recipe}
-                            isFavorite={favRecipes.includes(recipe.name)}
-                            markFavorite={() => dispatch(toggleFavorite(recipe.name))}
-                            onShowModal={() => setShowModal(!showModal)}
-                        />
-                        <Button
-                            title='Read Comments'
-                            onPress={() => navigation.navigate({
-                                name: 'Comments',
-                                params: { recipe }
-                            })}
-                        />
-                        <Text style={styles.commentsTitle}>Comments</Text>
-                    </>
-                }
+                
             />
             <Modal
-                animationType='slide'
                 transparent={false}
                 visible={showModal}
                 onRequestClose={() => setShowModal(!setShowModal)}
@@ -172,4 +128,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default RecipeInfoScreen;
+export default CommentsScreen;
