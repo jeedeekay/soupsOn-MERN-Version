@@ -15,11 +15,13 @@ import { useEffect, useState } from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Header from '../components/Header';
-import { fetchRecipes } from '../features/recipes/recipesSlice';
+import { fetchRecipes, refreshRecipes } from '../features/recipes/recipesSlice';
 import { fetchArticles } from '../features/articles/articlesSlice';
 import { fetchComments } from '../features/comments/commentsSlice';
+import { postComment } from '../features/recipes/recipesSlice';
 import { loginCheck } from '../features/users.js/usersSlice';
 import { useSelector } from 'react-redux';
+import { fetchFavRecipes } from '../features/favorites/favoriteRecipesSlice';
 
 const screenOptions = {
     headerStyle: { backgroundColor: '#f5c242' }
@@ -55,7 +57,8 @@ const HomeNavigator = () => {
             <Stack.Screen
                 name='Comments'
                 component={CommentsScreen}
-                options={({ route }) => ({ title: route.params.recipe.name })}
+                // options={({ route }) => ({ title: route.params.recipe.name })}
+                options={{ title: 'Comments'}}
             />
         </Stack.Navigator>
     );
@@ -86,7 +89,7 @@ const RecipeNavigator = () => {
             <Stack.Screen
                 name='Comments'
                 component={CommentsScreen}
-                options={({ route }) => ({ title: route.params.recipe.name })}
+                options={{ title: 'Comments'}}
             />
         </Stack.Navigator>
     );
@@ -202,7 +205,10 @@ const Main = () => {
         dispatch(fetchRecipes());
         dispatch(fetchArticles());
         dispatch(fetchComments());
+        // console.log(dispatch(postComment()));
+        dispatch(refreshRecipes());
         dispatch(loginCheck());
+        dispatch(fetchFavRecipes());
     }, [dispatch])
 
     const Tab = createMaterialBottomTabNavigator();

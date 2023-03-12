@@ -48,14 +48,6 @@ const RenderRecipe = (props) => {
                     onPress={() => props.markFavorite()}
                 />
                 <Icon
-                    name='pencil'
-                    type='font-awesome'
-                    color='#f5c242'
-                    raised
-                    reverse
-                    onPress={() => props.onShowModal()}
-                />
-                <Icon
                     name='share'
                     type='font-awesome'
                     color='#34b1eb'

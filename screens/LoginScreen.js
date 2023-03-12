@@ -10,6 +10,8 @@ import { Modal } from 'react-native-paper';
 import { loginCheck } from '../features/users.js/usersSlice';
 import { setLoginStatus } from '../features/users.js/usersSlice';
 import { logout } from '../features/users.js/usersSlice';
+import { logged } from '../features/favorites/favoriteRecipesSlice';
+import { fetchFavRecipes } from '../features/favorites/favoriteRecipesSlice';
 
 const LoginScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
@@ -42,6 +44,7 @@ const LoginScreen = ({ navigation }) => {
             body: JSON.stringify(payload),
         })
         .then((response) => {
+            // console.log('login', response);
             const goodCreds = response.status;
             console.log('CREDS', goodCreds);
             if (remember && goodCreds === 200) {
@@ -58,6 +61,8 @@ const LoginScreen = ({ navigation }) => {
                 // )
                 dispatch(setLoginStatus());
                 dispatch(loginCheck());
+                dispatch(logged(payload));
+                dispatch(fetchFavRecipes());
                 navigation.navigate('Content');
                 navigation.reset({
                     index: 0,

@@ -5,19 +5,63 @@ import {
     Modal,
     FlatList,
     StyleSheet } from 'react-native';
-import { ListItem, Avatar, Input, Rating } from 'react-native-elements';
+import { ListItem, Avatar, Input, Rating, Icon } from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
 import { useState } from 'react';
-import { postComment } from '../features/comments/commentsSlice';
+import { postComment, refreshRecipes } from '../features/recipes/recipesSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
-const CommentsScreen = ({ route }) => {
+const CommentsScreen = ({ route, navigation }) => {
     const { recipe } = route.params;
-    const comments = useSelector((state) => state.comments);
     const [showModal, setShowModal] = useState(false);
     const [rating, setRating] = useState(5);
     const [author, setAuthor] = useState('');
     const [text, setText] = useState('');
+    const [newCom, setNewCom] = useState(0);
+    const [comms, setNewComments] = useState(recipe.comments);
+    const recID = recipe._id;
+    console.log('page',recipe.comments);
+    // const comments = useSelector((state) => {
+    //     state.recipes.recipesArray.find((rec) => {
+    //         if (rec._id === recipe._id) {
+    //             console.log('rec', rec.comments);
+    //             return rec.comments;
+    //         }
+    //     })
+    // })
+    // setNewComments(useSelector((state) =>
+    //     state.recipes.recipesArray.filter((recipe) => {
+    //         if (recipe._id === recID) {
+    //             return recipe.comments;
+    //         }
+    //     })))
+    const dispatch = useDispatch();
+
+    console.log('comms',comms);
+
+    useEffect(() => {
+    },[])
+
+    const handleSubmit = () => {
+        const newComment = {
+            author,
+            rating,
+            text,
+            recipeId: recipe._id
+        };
+        dispatch(postComment(newComment));
+        const updatedComments = [...comms, newComment];
+        console.log(updatedComments);
+        setNewComments(updatedComments);
+        setShowModal(!showModal);
+    };
+
+    const resetForm = () => {
+        setRating(5);
+        setAuthor('');
+        setText('');
+    };
 
     const renderCommentItem = ({ item }) => {
         return (
@@ -39,15 +83,23 @@ const CommentsScreen = ({ route }) => {
     return (
         <View>
             <FlatList
-                data={comments.commentsArray.filter(
-                    (comment) => comment.recipeId === recipe._id
-                )}
+                data={comms}
                 renderItem={renderCommentItem}
                 keyExtractor={(item) => item._id}
                 contentContainerStyle={{
                     marginHorizontal: 20,
                     paddingVertical: 20
                 }}
+                ListFooterComponent={
+                    <Icon
+                    name='pencil'
+                    type='font-awesome'
+                    color='#f5c242'
+                    raised
+                    reverse
+                    onPress={() => setShowModal(!showModal)}
+                />
+                }
                 
             />
             <Modal
@@ -64,12 +116,6 @@ const CommentsScreen = ({ route }) => {
                         imageSize={40}
                         onFinishRating={(rating) => setRating(rating)}
                         style={{ paddingVertical: 10 }}
-                    />
-                    <Input
-                        placeholder='Name'
-                        leftIcon={{ name: 'user-o', type: 'font-awesome' }}
-                        leftIconContainerStyle={{ paddingRight: 10 }}
-                        onChangeText={(author) => setAuthor(author)}
                     />
                     <Input
                         placeholder='Leave comments here'

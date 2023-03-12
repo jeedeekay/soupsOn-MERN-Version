@@ -18,8 +18,6 @@ import { postComment } from '../features/comments/commentsSlice';
 const RecipeInfoScreen = ({ route, navigation }) => {
     console.log(route.params);
     const { recipe } = route.params;
-    const recipeId = recipe._id;
-    const comments = useSelector((state) => state.comments);
     const favRecipes = useSelector((state) => state.favRecipes);
     const dispatch = useDispatch();
 
@@ -63,91 +61,23 @@ const RecipeInfoScreen = ({ route, navigation }) => {
     }
 
     return (
-        <View>
-            <FlatList
-                data={comments.commentsArray.filter(
-                    (comment) => comment.recipeId === recipe._id
-                )}
-                renderItem={renderCommentItem}
-                keyExtractor={(item) => item._id}
-                contentContainerStyle={{
-                    marginHorizontal: 20,
-                    paddingVertical: 20
-                }}
-                ListHeaderComponent={
-                    <>
-                        <RenderRecipe
-                            recipe={recipe}
-                            isFavorite={favRecipes.includes(recipe.name)}
-                            markFavorite={() => dispatch(toggleFavorite(recipe.name))}
-                            onShowModal={() => setShowModal(!showModal)}
-                        />
-                        <Button
-                            title='Read Comments'
-                            onPress={() => navigation.navigate({
-                                name: 'Comments',
-                                params: { recipe }
-                            })}
-                        />
-                        <Text style={styles.commentsTitle}>Comments</Text>
-                    </>
-                }
+        <ScrollView>
+            <View>
+                <RenderRecipe
+                    recipe={recipe}
+                    // isFavorite={favRecipes.includes(recipe.name)}
+                    markFavorite={() => dispatch(toggleFavorite(recipe.name))}
+                    onShowModal={() => setShowModal(!showModal)}
+                />
+            </View>
+            <Button
+                title='Comments'
+                onPress={() => navigation.navigate({
+                    name: 'Comments',
+                    params: { recipe }
+                })}
             />
-            <Modal
-                animationType='slide'
-                transparent={false}
-                visible={showModal}
-                onRequestClose={() => setShowModal(!setShowModal)}
-            >
-                <View
-                    style={styles.modal}
-                >
-                    <Rating
-                        showRating
-                        startingValue={rating}
-                        imageSize={40}
-                        onFinishRating={(rating) => setRating(rating)}
-                        style={{ paddingVertical: 10 }}
-                    />
-                    <Input
-                        placeholder='Name'
-                        leftIcon={{ name: 'user-o', type: 'font-awesome' }}
-                        leftIconContainerStyle={{ paddingRight: 10 }}
-                        onChangeText={(author) => setAuthor(author)}
-                    />
-                    <Input
-                        placeholder='Leave comments here'
-                        leftIcon={{ name: 'comment-o', type: 'font-awesome' }}
-                        leftIconContainerStyle={{ paddingRight: 10 }}
-                        onChangeText={(text) => setText(text)}
-                    />
-                    <View
-                        style={{ margin: 10 }}
-                    >
-                        <Button
-                            onPress={() => {
-                                handleSubmit();
-                                resetForm();
-                            }}
-                            color='#5637DD'
-                            title='Submit'
-                        />
-                    </View>
-                    <View
-                        style={{ margin: 10 }}
-                    >
-                        <Button
-                            onPress={() => {
-                                setShowModal(!showModal);
-                                resetForm();
-                            }}
-                            color='#808080'
-                            title='Cancel'
-                        />
-                    </View>
-                </View>
-            </Modal>
-        </View>
+        </ScrollView>
     )
 };
 

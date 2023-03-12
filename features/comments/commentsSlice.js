@@ -15,39 +15,35 @@ export const fetchComments = createAsyncThunk(
     }
 );
 
-export const postComment = createAsyncThunk(
-    'comments/postComment',
-    async (payload, { dispatch, getState }) => {
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: payload,
-        };
-        const response = await fetch(baseUrl + 'comments', options);
-        if (!response.ok) {
-            return Promise.reject(
-                'Unable to fetch, status: ' + response.status
-            );
-        }
-        const data = await response.json();
-        return data;
-        // setTimeout(() => {
-        //     const { comments } = getState();
-        //     payload.date = new Date().toISOString();
-        //     payload.id = comments.commentsArray.length;
-        //     dispatch(addComment(payload));
-        // }, 2000)
-    }
-)
+// export const postComment = createAsyncThunk(
+//     'comments/postComment',
+//     async (payload, { dispatch, getState }) => {
+//         console.log(payload);
+//         const options = {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(payload),
+//         };
+//         const response = await fetch(baseUrl + `recipes/:recipeId/comments`, options);
+//         if (!response.ok) {
+//             return Promise.reject(
+//                 'Unable to fetch, status: ' + response.status
+//             );
+//         }
+//         const data = await response.json();
+//         return data;
+//     }
+// )
 
 const commentsSlice = createSlice({
     name: 'comments',
     initialState: { isLoading: true, errMess: null, commentsArray: [] },
     reducers: {
         addComment: (state, action) => {
-            state.commentsArray.push(action.payload);
+            console.log(action.payload);
+            // console.log(postComment(action.payload));
         }
     },
     extraReducers: {

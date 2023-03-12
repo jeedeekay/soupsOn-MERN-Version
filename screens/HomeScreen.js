@@ -58,10 +58,9 @@ const FeaturedItem = (props) => {
 const HomeScreen = ({ navigation }) => {
     const recipes = useSelector((state) => state.recipes);
     const articles = useSelector((state) => state.articles);
-
+    
     const featRecipe = recipes.recipesArray.find((item) => item.featured);
     const featArticle = articles.articlesArray.find((item) => item.featured);
-    // console.log(featRecipe);
 
     return (
         <ScrollView>

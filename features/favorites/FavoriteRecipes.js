@@ -7,25 +7,29 @@ const FavoriteRecipes = ({ navigation }) => {
     const { recipesArray } = useSelector(
         (state) => state.recipes
     );
-    const favorites = useSelector((state) => state.favRecipes);
+    console.log('recipe list',recipesArray);
+    // const { favRec } = useSelector((state) => state.favRecipes)
+    const favorites = useSelector((state) => 
+        state.favRecipes.favRecArr
+    );
+    console.log('favorites',favorites);
 
-    const flatListArr = [];
-    const favoriteDisplay = () => {
+    const favList = [];
+    recipesArray.forEach((rec) => {
         for (let i = 0; i < 1; i++) {
-            if (favorites[i]) {
-                flatListArr.push(favorites[i]);
+            if (favorites[i]._id === rec._id) {
+                favList.push(rec);
+                console.log(rec._id);
             }
         }
-        console.log('DISPLAY: ', flatListArr);
-    };
-    favoriteDisplay();
+    });
 
     const renderFavoriteRecipe = ({ item: recipe }) => {
         return (
             <View>
                 <ListItem
-                    onPress={() => navigation.navigate({
-                        name: 'RecipeInfo',
+                    onPress={() => navigation.navigate('Recipe', {
+                        scrren: 'RecipeInfo',
                         params: { recipe }
                     })}
                 >
@@ -52,9 +56,7 @@ const FavoriteRecipes = ({ navigation }) => {
                 backgroundColor: '#bbb',
                 marginTop: 15
             }}
-            data={recipesArray.filter((recipe) => 
-                flatListArr.includes(recipe.name)
-            )}
+            data={favList}
             renderItem={renderFavoriteRecipe}
             keyExtractor={(item) => item._id.toString()}
             ListFooterComponent={

@@ -7,7 +7,22 @@ const FavoriteRecipeScreen = ({ navigation }) => {
     const { recipesArray } = useSelector(
         (state) => state.recipes
     );
-    const favorites = useSelector((state) => state.favRecipes);
+    console.log('recipe list',recipesArray);
+    // const { favRec } = useSelector((state) => state.favRecipes)
+    const favorites = useSelector((state) => 
+        state.favRecipes.favRecArr
+    );
+    console.log('favorites',favorites);
+
+    const favList = [];
+    recipesArray.forEach((rec) => {
+        for (let i = 0; i < favorites.length; i++) {
+            if (favorites[i]._id === rec._id) {
+                favList.push(rec);
+                console.log(rec._id);
+            }
+        }
+    });
 
     const renderFavoriteRecipe = ({ item: recipe }) => {
         return (
@@ -29,9 +44,7 @@ const FavoriteRecipeScreen = ({ navigation }) => {
 
     return (
         <FlatList
-            data={recipesArray.filter((recipe) => 
-                favorites.includes(recipe.name)
-            )}
+            data={favList}
             renderItem={renderFavoriteRecipe}
             keyExtractor={(item) => item._id.toString()}
         />
