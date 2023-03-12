@@ -37,14 +37,14 @@ const RenderArticle = (props) => {
                     flexDirection: 'row'
                 }}
             >
-                <Icon
+                {/* <Icon
                     name={props.isFavorite ? 'heart' : 'heart-o'}
                     type='font-awesome'
                     color='#e573ff'
                     raised
                     reverse
                     onPress={() => props.markFavorite()}
-                />
+                /> */}
                 <Icon
                     name='share'
                     type='font-awesome'

@@ -116,7 +116,7 @@ const UserScreen = ({ navigation }) => {
                 
                 <View>
                     <FavoriteRecipes navigation={navigation}/>
-                    <FavoriteArticles navigation={navigation}/>
+                    {/* <FavoriteArticles navigation={navigation}/> */}
                 </View>
                 <View>
                     <Button

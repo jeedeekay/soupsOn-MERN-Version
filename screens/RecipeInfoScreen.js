@@ -12,14 +12,17 @@ import {
 import { Input, Rating } from 'react-native-elements';
 import RenderRecipe from '../features/recipes/RenderRecipes';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleFavorite } from '../features/favorites/favoriteRecipesSlice';
+import { fetchFavRecipes, toggleFavorite } from '../features/favorites/favoriteRecipesSlice';
 import { postComment } from '../features/comments/commentsSlice';
+import { toFav } from '../features/favorites/favoriteRecipesSlice';
 
 const RecipeInfoScreen = ({ route, navigation }) => {
     console.log(route.params);
     const { recipe } = route.params;
-    const favRecipes = useSelector((state) => state.favRecipes);
+    const favRecs = useSelector((state) => state.favRecipes.favRecArr);
     const dispatch = useDispatch();
+
+    console.log('recipe info screen', favRecs);
 
     const [showModal, setShowModal] = useState(false);
     const [rating, setRating] = useState(5);
@@ -42,6 +45,8 @@ const RecipeInfoScreen = ({ route, navigation }) => {
         setAuthor('');
         setText('');
     };
+    console.log('rec id', recipe._id);
+
 
     const renderCommentItem = ({ item }) => {
         return (
@@ -60,13 +65,26 @@ const RecipeInfoScreen = ({ route, navigation }) => {
         )
     }
 
+    const favIds = (r) => {
+        return favRecs.find((item) => item._id === r._id);
+    }
+    const favId = recipe._id;
+    console.log('extracted id', favId);
+
+    // dispatch(toggleFavorite({}));
+
     return (
         <ScrollView>
             <View>
                 <RenderRecipe
                     recipe={recipe}
-                    // isFavorite={favRecipes.includes(recipe.name)}
-                    markFavorite={() => dispatch(toggleFavorite(recipe.name))}
+                    isFavorite={favId}
+                    markFavorite={() => {
+                        dispatch(toFav(recipe._id));
+                        setTimeout(() => {
+                            dispatch(fetchFavRecipes())
+                        }, 5000);
+                    }}
                     onShowModal={() => setShowModal(!showModal)}
                 />
             </View>

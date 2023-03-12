@@ -27,6 +27,7 @@ export const postComment = createAsyncThunk(
             },
             body: JSON.stringify(payload),
         };
+        console.log('body',options.body);
         const response = await fetch(baseUrl + `recipes/:recipeId/comments`, options);
         if (!response.ok) {
             return Promise.reject(
