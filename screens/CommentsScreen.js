@@ -38,7 +38,7 @@ const CommentsScreen = ({ route }) => {
             dispatch(fetchRecipes())
         }, 500);
         setShowModal(!showModal);
-    };
+    }; 
 
     const resetForm = () => {
         setRating(5);
