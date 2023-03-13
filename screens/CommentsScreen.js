@@ -114,7 +114,7 @@ const CommentsScreen = ({ route }) => {
                                 handleSubmit();
                                 resetForm();
                             }}
-                            color='#5637DD'
+                            color='tomato'
                             title='Submit'
                         />
                     </View>
