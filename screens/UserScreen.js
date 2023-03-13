@@ -1,97 +1,14 @@
-import { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, Modal } from 'react-native';
-import { Avatar, Card,CheckBox, Input, Button, Icon } from 'react-native-elements';
-import FavoriteRecipes from '../features/favorites/FavoriteRecipes';
-import FavoriteArticles from '../features/favorites/FavoriteArticles';
-import * as SecureStore from 'expo-secure-store';
-import { baseUrl } from '../shared/baseUrl';
+import { useState } from 'react';
+import { View, Text, Modal } from 'react-native';
+import { Avatar, Card, Button } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
-import { logout, loginCheck } from '../features/users.js/usersSlice';
+import FavoriteRecipes from '../features/favorites/FavoriteRecipes';
+import { logout } from '../features/users.js/usersSlice';
 
 const UserScreen = ({ navigation }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [remember, setRemember] = useState(false);
-    const [loggedIn, setLoggedIn] = useState(false);
+    const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
 
-    const dispatch = useDispatch();
-
-    const handleLogin = () => {
-        // console.log('username:', username);
-        // console.log('password:', password);
-        // console.log('remember:', remember);
-        // const payload = {
-        //     username,
-        //     password
-        // };
-        // fetch(baseUrl + 'users/login', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(payload),
-        // });
-        // if (remember) {
-        //     SecureStore.setItemAsync(
-        //         'userinfo',
-        //         JSON.stringify({
-        //             username,
-        //             password
-        //         })
-        //     )
-        //     .catch(
-        //         (error) => console.log('Could not save user info', error)
-        //     )
-        // } else {
-        //     SecureStore.deleteItemAsync('userinfo')
-        //     .catch(
-        //         (error) => console.log('Could not delete user info', error)
-        //     )
-        // }
-    }
-
-    const handleRegister = () => {
-        const userInfo = {
-            username,
-            password,
-            firstName,
-            lastName,
-            remember
-        };
-        console.log(JSON.stringify(userInfo));
-        if (remember) {
-            SecureStore.setItemAsync(
-                'userinfo',
-                JSON.stringify({
-                    username,
-                    password
-                })
-            )
-            .catch(
-                (error) => console.log('Could not save user info', error)
-            )
-        } else {
-            SecureStore.deleteItemAsync('userinfo')
-            .catch(
-                (error) => console.log('Could not delete user info', error)
-            )
-        }
-    }
-
-    useEffect(() => {
-        SecureStore.getItemAsync('userinfo').then((userdata) => {
-            const userinfo = JSON.parse(userdata);
-            if (userinfo) {
-                setUsername(userinfo.username);
-                setPassword(userinfo.password);
-                setRemember(true);
-                setLoggedIn(true);
-            }
-        });
-    }, []);
         return (
             <View>
                 <View>
@@ -122,14 +39,6 @@ const UserScreen = ({ navigation }) => {
                     <Button
                         title='Logout' 
                         onPress={() => setShowModal(!showModal)}
-                        //     dispatch(logout());
-                        //     dispatch(loginCheck());
-                        //     navigation.navigate('Login');
-                        //     navigation.reset({
-                        //         index: 0,
-                        //         routes: [{ name: 'Login' }],
-                        //     });
-                        // }}
                         buttonStyle={{backgroundColor: 'red', marginTop: 30}}
                 />
                 </View>
@@ -146,7 +55,6 @@ const UserScreen = ({ navigation }) => {
                             title='Logout' 
                             onPress={() => {
                                 dispatch(logout());
-                                dispatch(loginCheck());
                                 navigation.navigate('Login');
                                 navigation.reset({
                                     index: 0,
@@ -165,42 +73,5 @@ const UserScreen = ({ navigation }) => {
             </View>
         );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        marginTop: 30,
-        padding: 20,
-        paddingBottom: 40,
-        backgroundColor: 'white'
-    },
-    formIcon: {
-        marginRight: 10
-    },
-    formInput: {
-        padding: 8,
-        height: 60
-    },
-    formCheckbox: {
-        margin: 8,
-        backgroundColor: null
-    },
-    formButton: {
-        marginTop: 20,
-        marginRight: 40,
-        marginLeft: 40,
-    },
-    imageContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        margin: 10
-    },
-    image: {
-        width: 60,
-        height: 60
-    }
-});
 
 export default UserScreen;

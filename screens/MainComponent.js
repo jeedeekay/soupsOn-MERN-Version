@@ -11,14 +11,12 @@ import LoginScreen from './LoginScreen';
 import CommentsScreen from './CommentsScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Header from '../components/Header';
-import { fetchRecipes, refreshRecipes } from '../features/recipes/recipesSlice';
+import { fetchRecipes } from '../features/recipes/recipesSlice';
 import { fetchArticles } from '../features/articles/articlesSlice';
-import { fetchComments } from '../features/comments/commentsSlice';
-import { postComment } from '../features/recipes/recipesSlice';
 import { loginCheck } from '../features/users.js/usersSlice';
 import { useSelector } from 'react-redux';
 import { fetchFavRecipes } from '../features/favorites/favoriteRecipesSlice';
@@ -57,7 +55,6 @@ const HomeNavigator = () => {
             <Stack.Screen
                 name='Comments'
                 component={CommentsScreen}
-                // options={({ route }) => ({ title: route.params.recipe.name })}
                 options={{ title: 'Comments'}}
             />
         </Stack.Navigator>
@@ -199,14 +196,10 @@ const LoginNavigator = () => {
 
 const Main = () => {
     const activeUser = useSelector((state) => state.users.loggedIn);
-    console.log('Active User: ', activeUser);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchRecipes());
         dispatch(fetchArticles());
-        dispatch(fetchComments());
-        // console.log(dispatch(postComment()));
-        dispatch(refreshRecipes());
         dispatch(loginCheck());
         dispatch(fetchFavRecipes());
     }, [dispatch])

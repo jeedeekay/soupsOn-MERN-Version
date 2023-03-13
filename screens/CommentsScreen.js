@@ -5,42 +5,25 @@ import {
     Modal,
     FlatList,
     StyleSheet } from 'react-native';
-import { ListItem, Avatar, Input, Rating, Icon } from 'react-native-elements';
-import { baseUrl } from '../shared/baseUrl';
+import { Input, Rating, Icon } from 'react-native-elements';
 import { useState } from 'react';
-import { postComment, refreshRecipes } from '../features/recipes/recipesSlice';
+import { postComment, fetchRecipes } from '../features/recipes/recipesSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-const CommentsScreen = ({ route, navigation }) => {
+const CommentsScreen = ({ route }) => {
     const { recipe } = route.params;
+    const comments = useSelector(state => state.recipes.recipesArray[
+        state.recipes.recipesArray.indexOf(state.recipes.recipesArray.find(
+            (rec) => rec._id === recipe._id))].comments);
     const [showModal, setShowModal] = useState(false);
     const [rating, setRating] = useState(5);
     const [author, setAuthor] = useState('');
     const [text, setText] = useState('');
-    const [newCom, setNewCom] = useState(0);
-    const [comms, setNewComments] = useState(recipe.comments);
-    const recID = recipe._id;
-    console.log('page',recipe.comments);
-    // const comments = useSelector((state) => {
-    //     state.recipes.recipesArray.find((rec) => {
-    //         if (rec._id === recipe._id) {
-    //             console.log('rec', rec.comments);
-    //             return rec.comments;
-    //         }
-    //     })
-    // })
-    // setNewComments(useSelector((state) =>
-    //     state.recipes.recipesArray.filter((recipe) => {
-    //         if (recipe._id === recID) {
-    //             return recipe.comments;
-    //         }
-    //     })))
     const dispatch = useDispatch();
 
-    console.log('comms',comms);
-
     useEffect(() => {
+        dispatch(fetchRecipes());
     },[])
 
     const handleSubmit = () => {
@@ -51,9 +34,9 @@ const CommentsScreen = ({ route, navigation }) => {
             recipeId: recipe._id
         };
         dispatch(postComment(newComment));
-        const updatedComments = [...comms, newComment];
-        console.log(updatedComments);
-        setNewComments(updatedComments);
+        setTimeout(() => {
+            dispatch(fetchRecipes())
+        }, 500);
         setShowModal(!showModal);
     };
 
@@ -83,7 +66,7 @@ const CommentsScreen = ({ route, navigation }) => {
     return (
         <View>
             <FlatList
-                data={comms}
+                data={comments}
                 renderItem={renderCommentItem}
                 keyExtractor={(item) => item._id}
                 contentContainerStyle={{

@@ -1,19 +1,23 @@
 import { View, FlatList } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import { useEffect } from 'react';
+import { fetchFavRecipes } from '../features/favorites/favoriteRecipesSlice';
 
 const FavoriteRecipeScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchFavRecipes());
+    }, []);
+
     const { recipesArray } = useSelector(
         (state) => state.recipes
     );
-    console.log('recipe list',recipesArray);
-    // const { favRec } = useSelector((state) => state.favRecipes)
     const favorites = useSelector((state) => 
         state.favRecipes.favRecArr
-    );
-    console.log('favorites',favorites);
-
+    );  
     const favList = [];
     recipesArray.forEach((rec) => {
         for (let i = 0; i < favorites.length; i++) {
@@ -28,8 +32,8 @@ const FavoriteRecipeScreen = ({ navigation }) => {
         return (
             <View>
                 <ListItem
-                    onPress={() => navigation.navigate({
-                        name: 'RecipeInfo',
+                    onPress={() => navigation.navigate('Recipe',{
+                        screen: 'RecipeInfo',
                         params: { recipe }
                     })}
                 >

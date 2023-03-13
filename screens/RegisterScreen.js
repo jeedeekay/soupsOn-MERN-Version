@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { Avatar, Card,CheckBox, Input, Button, Icon } from 'react-native-elements';
-import FavoriteRecipes from '../features/favorites/FavoriteRecipes';
-import FavoriteArticles from '../features/favorites/FavoriteArticles';
 import * as SecureStore from 'expo-secure-store';
 import { baseUrl } from '../shared/baseUrl';
 import { useDispatch } from 'react-redux';
-import { Modal } from 'react-native-paper';
 
 const RegisterScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
@@ -15,7 +12,6 @@ const RegisterScreen = ({ navigation }) => {
     const [lastname, setLastName] = useState('');
     const [remember, setRemember] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
-    const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -26,7 +22,6 @@ const RegisterScreen = ({ navigation }) => {
             username,
             password
         };
-        console.log(userInfo);
         fetch(baseUrl + 'users/signup', {
             method: 'POST',
             headers: {
@@ -34,24 +29,6 @@ const RegisterScreen = ({ navigation }) => {
             },
             body: JSON.stringify(userInfo),
         });
-        // console.log(JSON.stringify(userInfo));
-        // if (remember) {
-        //     SecureStore.setItemAsync(
-        //         'userinfo',
-        //         JSON.stringify({
-        //             username,
-        //             password
-        //         })
-        //     )
-        //     .catch(
-        //         (error) => console.log('Could not save user info', error)
-        //     )
-        // } else {
-        //     SecureStore.deleteItemAsync('userinfo')
-        //     .catch(
-        //         (error) => console.log('Could not delete user info', error)
-        //     )
-        // }
     }
 
     useEffect(() => {
@@ -67,14 +44,13 @@ const RegisterScreen = ({ navigation }) => {
     }, []);
         return (
             <View>
-                <View style={styles.container}>
+                <View style={{ marginTop: 20 }}>
                     <Input
                         placeholder='Username'
                         leftIcon={{ type: 'font-awesome', name: 'user-o'}}
                         onChangeText={(text) => setUsername(text)}
                         value={username}
-                        containerStyle={styles.formInput}
-                        leftIconContainerStyle={styles.formIcon}
+                        
                     />
                     <Input
                         secureTextEntry={true}
@@ -82,33 +58,29 @@ const RegisterScreen = ({ navigation }) => {
                         leftIcon={{ type: 'font-awesome', name: 'key' }}
                         onChangeText={(text) => setPassword(text)}
                         value={password}
-                        containerStyle={styles.formInput}
-                        leftIconContainerStyle={styles.formIcon}
+                        
                     />
                     <Input
                         placeholder='First Name'
-                        leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+                        leftIcon={{ type: 'font-awesome', name: 'user' }}
                         onChangeText={(text) => setFirstName(text)}
                         value={firstname}
-                        containerStyle={styles.formInput}
-                        leftIconContainerStyle={styles.formIcon}
+                        
                     />
                     <Input
                         placeholder='Last Name'
-                        leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+                        leftIcon={{ type: 'font-awesome', name: 'user' }}
                         onChangeText={(text) => setLastName(text)}
                         value={lastname}
-                        containerStyle={styles.formInput}
-                        leftIconContainerStyle={styles.formIcon}
                     />
                     <CheckBox
                         title='Remember Me'
                         center
                         checked={remember}
                         onPress={() => setRemember(!remember)}
-                        style={styles.formCheckbox}
+                        
                     />
-                    <View style={styles.formButton}>
+                    <View>
                         <Button
                             onPress={() => {
                                 handleRegister();
@@ -124,55 +96,19 @@ const RegisterScreen = ({ navigation }) => {
                                     iconStyle={{ marginRight: 10}}
                                 />
                             }
-                            buttonStyle={{ backgroundColor: '#5637DD' }}
+                            buttonStyle={{ backgroundColor: 'tomato', marginTop: 20 }}
                         />
                     </View>
-                    <View style={styles.formButton}>
+                    <View>
                         <Button
                             onPress={() => navigation.navigate('Login')}
                             title='Cancel'
+                            buttonStyle={{ backgroundColor: '#888', marginTop: 20 }}
                         />
                     </View>
                 </View>
             </View>
         );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        marginTop: 30,
-        padding: 20,
-        paddingBottom: 40,
-        backgroundColor: 'white'
-    },
-    formIcon: {
-        marginRight: 10
-    },
-    formInput: {
-        padding: 8,
-        height: 60
-    },
-    formCheckbox: {
-        margin: 8,
-        backgroundColor: null
-    },
-    formButton: {
-        marginTop: 20,
-        marginRight: 40,
-        marginLeft: 40
-    },
-    imageContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        margin: 10
-    },
-    image: {
-        width: 60,
-        height: 60
-    }
-});
 
 export default RegisterScreen;

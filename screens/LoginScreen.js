@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import { Avatar, Card,CheckBox, Input, Button, Icon } from 'react-native-elements';
-import FavoriteRecipes from '../features/favorites/FavoriteRecipes';
-import FavoriteArticles from '../features/favorites/FavoriteArticles';
+import { View, StyleSheet } from 'react-native';
+import { CheckBox, Input, Button, Icon } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 import { baseUrl } from '../shared/baseUrl';
 import { useDispatch } from 'react-redux';
@@ -25,17 +23,10 @@ const LoginScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
     const handleLogin = () => {
-        console.log('username:', username);
-        console.log('password:', password);
-        console.log('remember:', remember);
-
         const payload = {
             username,
             password
         };
-
-        console.log(payload);
-
         fetch(baseUrl + 'users/login', {
             method: 'POST',
             headers: {
@@ -44,21 +35,8 @@ const LoginScreen = ({ navigation }) => {
             body: JSON.stringify(payload),
         })
         .then((response) => {
-            // console.log('login', response);
             const goodCreds = response.status;
-            console.log('CREDS', goodCreds);
-            if (remember && goodCreds === 200) {
-                console.log('CLEARED PERSIST CHECK')
-                // SecureStore.setItemAsync(
-                //     'userinfo',
-                //     JSON.stringify({
-                //         username,
-                //         password
-                //     })
-                // )
-                // .catch(
-                //     (error) => console.log('Could not save user info', error)
-                // )
+            if (goodCreds === 200) {
                 dispatch(setLoginStatus());
                 dispatch(loginCheck());
                 dispatch(logged(payload));
@@ -77,34 +55,6 @@ const LoginScreen = ({ navigation }) => {
         })
     }
 
-    const handleRegister = () => {
-        const userInfo = {
-            username,
-            password,
-            firstName,
-            lastName,
-            remember
-        };
-        console.log(JSON.stringify(userInfo));
-        if (remember) {
-            SecureStore.setItemAsync(
-                'userinfo',
-                JSON.stringify({
-                    username,
-                    password
-                })
-            )
-            .catch(
-                (error) => console.log('Could not save user info', error)
-            )
-        } else {
-            SecureStore.deleteItemAsync('userinfo')
-            .catch(
-                (error) => console.log('Could not delete user info', error)
-            )
-        }
-    }
-
     useEffect(() => {
         SecureStore.getItemAsync('userinfo').then((userdata) => {
             const userinfo = JSON.parse(userdata);
@@ -113,7 +63,6 @@ const LoginScreen = ({ navigation }) => {
                 setPassword(userinfo.password);
                 setRemember(true);
                 setLoggedIn(true);
-                console.log(userinfo, "LOGGED IN")
             }
         });
     }, []);
@@ -123,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
             >
                 <Input
                     placeholder='Username'
-                    leftIcon={{ type: 'font-awesome', name: 'user-o'}}
+                    leftIcon={{ type: 'font-awesome', name: 'user'}}
                     onChangeText={(text) => setUsername(text)}
                     value={username}
                 />
@@ -148,7 +97,7 @@ const LoginScreen = ({ navigation }) => {
                             }
                         }
                         title='Login'
-                        color='#5637DD'
+                        color='#345666'
                         icon={
                             <Icon
                                 name='sign-in'
@@ -157,27 +106,8 @@ const LoginScreen = ({ navigation }) => {
                                 iconStyle={{ marginRight: 10}}
                             />
                         }
-                        buttonStyle={{ backgroundColor: '#5637DD' }}
+                        buttonStyle={{ backgroundColor: 'green' }}
                     />
-                    {/* <Button
-                        onPress={() => {
-                                setLoggedIn(false);
-                                dispatch(logout());
-                                dispatch(loginCheck());
-                            }
-                        }
-                        title='Logout'
-                        color='#5637DD'
-                        icon={
-                            <Icon
-                                name='sign-out'
-                                type='font-awesome'
-                                color='#fff'
-                                iconStyle={{ marginRight: 10}}
-                            />
-                        }
-                        buttonStyle={{ backgroundColor: '#5637DD' }}
-                    /> */}
                 </View>
                 <View>
                     <Button
@@ -188,52 +118,15 @@ const LoginScreen = ({ navigation }) => {
                             <Icon
                                 name='user-plus'
                                 type='font-awesome'
-                                color='blue'
+                                color='tomato'
                                 iconStyle={{ marginRight: 10}}
                             />
                         }
-                        buttonStyle={{ color: 'blue' }}
+                        buttonStyle={{ color: 'tomato' }}
                     />
                 </View>
             </View>
         );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        marginTop: 30,
-        padding: 20,
-        paddingBottom: 40,
-        backgroundColor: 'white'
-    },
-    formIcon: {
-        marginRight: 10
-    },
-    formInput: {
-        padding: 8,
-        height: 60
-    },
-    formCheckbox: {
-        margin: 8,
-        backgroundColor: null
-    },
-    formButton: {
-        marginTop: 20,
-        marginRight: 40,
-        marginLeft: 40
-    },
-    imageContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        margin: 10
-    },
-    image: {
-        width: 60,
-        height: 60
-    }
-});
 
 export default LoginScreen;

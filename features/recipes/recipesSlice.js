@@ -17,9 +17,7 @@ export const fetchRecipes = createAsyncThunk(
 
 export const postComment = createAsyncThunk(
     'recipes/postComment',
-    async (payload, { dispatch, getState }) => {
-        dispatch(refreshRecipes(payload));
-        console.log('in post',payload);
+    async (payload) => {
         const options = {
             method: 'POST',
             headers: {
@@ -42,20 +40,7 @@ export const postComment = createAsyncThunk(
 const recipesSlice = createSlice({
     name: 'recipes',
     initialState: { isLoading: true, errMess: null, recipesArray: [] },
-    reducers: {
-        refreshRecipes: (state, action) => {
-            state.recipesArray.find((recipe) => {
-                if (action.payload) {
-                    console.log('refresh', action.payload.recipeId);
-                    if (recipe._id === action.payload.recipeId) {
-                        recipe.comments.push(action.payload);
-                        console.log(recipe.comments);
-                    }
-                }
-                
-            })
-        }
-    },
+    reducers: {},
     extraReducers: {
         [fetchRecipes.pending]: (state) => {
             state.isLoading = true;
@@ -88,5 +73,4 @@ const recipesSlice = createSlice({
     }
 });
 
-export const {refreshRecipes} = recipesSlice.actions;
 export const recipesReducer = recipesSlice.reducer;

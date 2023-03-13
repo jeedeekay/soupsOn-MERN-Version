@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { recipesReducer } from '../features/recipes/recipesSlice';
 import { articlesReducer } from '../features/articles/articlesSlice';
-import { commentsReducer } from '../features/comments/commentsSlice';
 import { favoriteRecipesReducer } from '../features/favorites/favoriteRecipesSlice';
 import { favoriteArticlesReducer } from '../features/favorites/favoriteArticlesSlice';
 import { usersReducer } from '../features/users.js/usersSlice';
@@ -27,7 +26,6 @@ export const store = configureStore({
     reducer: persistCombineReducers(config, {
         recipes: recipesReducer,
         articles: articlesReducer,
-        comments: commentsReducer,
         favRecipes: favoriteRecipesReducer,
         favArticles: favoriteArticlesReducer,
         users: usersReducer

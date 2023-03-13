@@ -7,19 +7,16 @@ const FavoriteRecipes = ({ navigation }) => {
     const { recipesArray } = useSelector(
         (state) => state.recipes
     );
-    // console.log('recipe list',recipesArray);
-    // const { favRec } = useSelector((state) => state.favRecipes)
+
     const favorites = useSelector((state) => 
         state.favRecipes.favRecArr
     );
-    // console.log('favorites',favorites);
 
     const favList = [];
     recipesArray.forEach((rec) => {
         for (let i = 0; i < 3; i++) {
             if (favorites[i] === rec._id) {
                 favList.push(rec);
-                // console.log(rec._id);
             }
         }
     });
